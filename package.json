@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:setup": "prisma migrate deploy && tsx prisma/seed.ts && tsx scripts/setup-storage.ts",
+    "db:setup": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts && tsx scripts/setup-storage.ts",
     "prebuild": "npm run db:setup"
   },
   "dependencies": {
