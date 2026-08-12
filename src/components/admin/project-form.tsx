@@ -88,7 +88,7 @@ export function ProjectForm({ mode, project }: ProjectFormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex max-w-2xl flex-col gap-5">
       <div className="flex flex-col gap-2">
-        <Label htmlFor="title">Title</Label>
+        <Label htmlFor="title">Judul</Label>
         <Input
           id="title"
           value={form.title}
@@ -115,7 +115,7 @@ export function ProjectForm({ mode, project }: ProjectFormProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Label htmlFor="shortDescription">Short description</Label>
+        <Label htmlFor="shortDescription">Deskripsi singkat</Label>
         <Textarea
           id="shortDescription"
           rows={2}
@@ -128,7 +128,7 @@ export function ProjectForm({ mode, project }: ProjectFormProps) {
       <MarkdownEditor
         value={form.content}
         onChange={(v) => set("content", v)}
-        label="Content (markdown)"
+        label="Konten (markdown)"
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -175,14 +175,14 @@ export function ProjectForm({ mode, project }: ProjectFormProps) {
             checked={form.featured}
             onCheckedChange={(v) => set("featured", Boolean(v))}
           />
-          Featured
+          Unggulan
         </label>
         <label className="flex items-center gap-2 text-sm">
           <Checkbox
             checked={form.published}
             onCheckedChange={(v) => set("published", Boolean(v))}
           />
-          Published
+          Terbitkan
         </label>
       </div>
 

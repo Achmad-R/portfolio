@@ -16,6 +16,7 @@ interface ImageUploadProps {
 export function ImageUpload({ value, onChange }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [dragging, setDragging] = useState(false);
 
   async function handleFile(file: File) {
     setError(null);
@@ -29,7 +30,7 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
         setError(data.error ?? "Upload gagal.");
         return;
       }
-      onChange(data.url);
+      onChange(data.path);
     } catch {
       setError("Upload gagal. Coba lagi.");
     } finally {
@@ -50,12 +51,35 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
           />
         </div>
       ) : (
-        <div className="flex aspect-video w-full max-w-md items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
-          Belum ada cover image
+        <div
+          role="button"
+          tabIndex={0}
+          data-dragging={dragging || undefined}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragging(true);
+          }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragging(false);
+            const file = e.dataTransfer.files?.[0];
+            if (file) void handleFile(file);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              document.getElementById("cover-file-input")?.click();
+            }
+          }}
+          className="flex aspect-video w-full max-w-md cursor-pointer flex-col items-center justify-center gap-1 rounded-md border border-dashed text-sm text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring data-[dragging]:border-primary data-[dragging]:text-primary"
+        >
+          <Upload className="size-5" />
+          Seret gambar ke sini, atau klik untuk memilih
         </div>
       )}
       <div className="flex items-center gap-3">
         <Input
+          id="cover-file-input"
           type="file"
           accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
           onChange={(e) => {
@@ -75,7 +99,6 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
         </Button>
       </div>
       {error && <p className="text-xs text-destructive">{error}</p>}
-      <Input type="hidden" name="coverImageUrl" value={value} readOnly />
     </div>
   );
 }

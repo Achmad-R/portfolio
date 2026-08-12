@@ -1,15 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import { site } from "@/lib/site";
-
-const contactSchema = z.object({
-  name: z.string().min(2).max(100),
-  email: z.string().email(),
-  subject: z.string().min(2).max(200),
-  message: z.string().min(10).max(5000),
-});
+import { contactSchema } from "@/lib/contact-schema";
 
 const THROTTLE_MS = 5 * 60 * 1000;
 
@@ -29,6 +22,11 @@ export async function POST(request: NextRequest) {
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: "Validation failed" }, { status: 400 });
+  }
+
+  // Honeypot terisi → bot. Balas sukses tanpa menyimpan apa pun.
+  if (parsed.data.website) {
+    return NextResponse.json({ ok: true }, { status: 200 });
   }
 
   const ip = getClientIp(request);

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { LayoutDashboard, FolderKanban, FileText, Inbox, ExternalLink } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { LogoutButton } from "@/components/admin/logout-button";
@@ -14,6 +16,10 @@ export default async function AdminLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const session = await auth();
+  const pathname = (await headers()).get("x-invoke-path") ?? "";
+  if (!session?.user && pathname && pathname !== "/admin/login") {
+    redirect("/admin/login");
+  }
   const loggedIn = Boolean(session?.user);
 
   return (

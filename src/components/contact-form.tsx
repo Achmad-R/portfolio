@@ -1,18 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-
-const contactSchema = z.object({
-  name: z.string().min(2).max(100),
-  email: z.string().email(),
-  subject: z.string().min(2).max(200),
-  message: z.string().min(10).max(5000),
-});
+import { contactSchema } from "@/lib/contact-schema";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -30,7 +23,16 @@ export function ContactForm() {
     event.preventDefault();
     setErrors({});
 
-    const parsed = contactSchema.safeParse(formData);
+    const form = new FormData(event.currentTarget);
+    const payload = {
+      name: form.get("name")?.toString() ?? "",
+      email: form.get("email")?.toString() ?? "",
+      subject: form.get("subject")?.toString() ?? "",
+      message: form.get("message")?.toString() ?? "",
+      website: form.get("website")?.toString() ?? "",
+    };
+
+    const parsed = contactSchema.safeParse(payload);
     if (!parsed.success) {
       const next: Record<string, string> = {};
       for (const issue of parsed.error.issues) {
@@ -49,6 +51,7 @@ export function ContactForm() {
       });
       if (res.ok) {
         setState("success");
+        event.currentTarget.reset();
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
         setState("error");

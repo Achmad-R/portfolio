@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
-import { getAdminStorageClient } from "@/lib/supabase";
+import { getAdminStorageClient, storageBucket } from "@/lib/supabase";
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"]);
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
 
   const admin = getAdminStorageClient();
-  const { error } = await admin.storage.from("covers").upload(path, buffer, {
+  const { error } = await admin.storage.from(storageBucket).upload(path, buffer, {
     contentType: file.type,
     upsert: true,
   });
@@ -42,5 +42,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: `Upload gagal: ${error.message}` }, { status: 500 });
   }
 
-  return NextResponse.json({ url: path }, { status: 200 });
+  return NextResponse.json({ path }, { status: 200 });
 }

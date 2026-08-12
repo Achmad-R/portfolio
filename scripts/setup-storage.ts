@@ -1,10 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 import pg from "pg";
+import { storageBucket } from "../src/lib/supabase";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const directUrl = process.env.DIRECT_URL!;
-const BUCKET = "covers";
+const BUCKET = storageBucket;
 
 async function main() {
   const admin = createClient(supabaseUrl, serviceRoleKey, {

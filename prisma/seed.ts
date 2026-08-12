@@ -1,12 +1,15 @@
 import bcrypt from "bcryptjs";
+import { randomBytes } from "node:crypto";
 import { site } from "../src/lib/site";
 import { prisma } from "../src/lib/prisma";
 
 async function main() {
   const adminEmail = process.env.ADMIN_EMAIL ?? site.email;
-  const adminPassword = process.env.ADMIN_PASSWORD;
+  let adminPassword = process.env.ADMIN_PASSWORD;
   if (!adminPassword) {
-    throw new Error("ADMIN_PASSWORD env tidak di-set. Set ADMIN_PASSWORD sebelum menjalankan seed.");
+    adminPassword = randomBytes(18).toString("base64url");
+    console.log(`ADMIN_PASSWORD tidak di-set — password baru di-generate: ${adminPassword}`);
+    console.log("Simpan password ini; tidak akan ditampilkan lagi.");
   }
 
   const existing = await prisma.user.findUnique({ where: { email: adminEmail } });
@@ -20,7 +23,11 @@ async function main() {
     console.log(`Admin user sudah ada, dilewati: ${adminEmail}`);
   }
 
-  if ((await prisma.project.count()) === 0) {
+  const hasContent =
+    (await prisma.project.count()) > 0 || (await prisma.blogPost.count()) > 0;
+  if (hasContent) {
+    console.log("Konten placeholder dilewati (sudah ada konten).");
+  } else {
     await prisma.project.createMany({
       data: [
         {
@@ -111,9 +118,7 @@ A weather data aggregation API that normalizes responses from multiple weather p
       ],
     });
     console.log("3 placeholder projects seeded.");
-  }
 
-  if ((await prisma.blogPost.count()) === 0) {
     await prisma.blogPost.createMany({
       data: [
         {

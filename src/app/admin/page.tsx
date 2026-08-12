@@ -24,6 +24,7 @@ export default async function AdminDashboardPage() {
       prisma.message.count(),
       prisma.message.count({ where: { isRead: false } }),
       prisma.message.findMany({
+        where: { isRead: false },
         orderBy: { createdAt: "desc" },
         take: 5,
       }),
@@ -37,7 +38,7 @@ export default async function AdminDashboardPage() {
       value: messageCount,
       href: "/admin/messages",
       icon: Inbox,
-      badge: unreadCount > 0 ? `${unreadCount} unread` : undefined,
+      badge: unreadCount > 0 ? `${unreadCount} belum dibaca` : undefined,
     },
   ];
 
@@ -78,7 +79,7 @@ export default async function AdminDashboardPage() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <h2 className="font-heading text-lg font-semibold">
-            <span className="text-primary">#</span> Pesan terbaru
+            <span className="text-primary">#</span> Pesan belum dibaca
           </h2>
           <Link
             href="/admin/messages"
@@ -88,7 +89,7 @@ export default async function AdminDashboardPage() {
           </Link>
         </div>
         {recentMessages.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Belum ada pesan masuk.</p>
+          <p className="text-sm text-muted-foreground">Tidak ada pesan belum dibaca.</p>
         ) : (
           <div className="flex flex-col divide-y rounded-lg border bg-card">
             {recentMessages.map((message) => (

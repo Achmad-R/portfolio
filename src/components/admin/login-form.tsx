@@ -51,7 +51,7 @@ export function LoginForm() {
       </div>
       {error && <p className="text-sm text-destructive">{error}</p>}
       <Button type="submit" disabled={loading}>
-        {loading ? "Logging in..." : "Login"}
+        {loading ? "Memproses..." : "Masuk"}
       </Button>
     </form>
   );

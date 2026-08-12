@@ -44,7 +44,7 @@ export default async function AdminProjectsPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Title</TableHead>
+                <TableHead>Judul</TableHead>
                 <TableHead>Slug</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right">Aksi</TableHead>

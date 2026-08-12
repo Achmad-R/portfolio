@@ -6,7 +6,11 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { revalidateProject, revalidatePost } from "@/lib/revalidate";
-import { getAdminStorageClient, storagePathFromUrl } from "@/lib/supabase";
+import {
+  getAdminStorageClient,
+  storageBucket,
+  storagePathFromUrl,
+} from "@/lib/supabase";
 
 const emptyToNull = (v: unknown) => (typeof v === "string" && v.trim() === "" ? null : v);
 
@@ -49,14 +53,36 @@ async function requireAdmin() {
 }
 
 async function removeCoverImage(url: string) {
-  const path = storagePathFromUrl(url) ?? url;
+  const path = storagePathFromUrl(url);
   if (!path) return;
   try {
     const admin = getAdminStorageClient();
-    await admin.storage.from("covers").remove([path]);
+    await admin.storage.from(storageBucket).remove([path]);
   } catch {
     // best-effort: gagal hapus image tidak memblokir operasi utama
   }
+}
+
+interface DeleteContentOptions {
+  notFound: string;
+  find: () => Promise<{ slug: string; coverImageUrl: string | null } | null>;
+  remove: () => Promise<unknown>;
+  revalidate: (slug: string) => void;
+  redirectTo: string;
+}
+
+async function deleteContentItem(options: DeleteContentOptions) {
+  await requireAdmin();
+  const item = await options.find();
+  if (!item) {
+    return { error: options.notFound };
+  }
+  await options.remove();
+  if (item.coverImageUrl) {
+    await removeCoverImage(item.coverImageUrl);
+  }
+  options.revalidate(item.slug);
+  redirect(options.redirectTo);
 }
 
 export async function createProject(input: unknown) {
@@ -114,21 +140,17 @@ export async function updateProject(id: string, input: unknown) {
 }
 
 export async function deleteProject(id: string) {
-  await requireAdmin();
-  const project = await prisma.project.findUnique({
-    where: { id },
-    select: { slug: true, coverImageUrl: true },
+  return deleteContentItem({
+    notFound: "Project tidak ditemukan.",
+    find: () =>
+      prisma.project.findUnique({
+        where: { id },
+        select: { slug: true, coverImageUrl: true },
+      }),
+    remove: () => prisma.project.delete({ where: { id } }),
+    revalidate: revalidateProject,
+    redirectTo: "/admin/projects",
   });
-  if (!project) {
-    return { error: "Project tidak ditemukan." };
-  }
-
-  await prisma.project.delete({ where: { id } });
-  if (project.coverImageUrl) {
-    await removeCoverImage(project.coverImageUrl);
-  }
-  revalidateProject(project.slug);
-  redirect("/admin/projects");
 }
 
 export async function createPost(input: unknown) {
@@ -186,21 +208,17 @@ export async function updatePost(id: string, input: unknown) {
 }
 
 export async function deletePost(id: string) {
-  await requireAdmin();
-  const post = await prisma.blogPost.findUnique({
-    where: { id },
-    select: { slug: true, coverImageUrl: true },
+  return deleteContentItem({
+    notFound: "Post tidak ditemukan.",
+    find: () =>
+      prisma.blogPost.findUnique({
+        where: { id },
+        select: { slug: true, coverImageUrl: true },
+      }),
+    remove: () => prisma.blogPost.delete({ where: { id } }),
+    revalidate: revalidatePost,
+    redirectTo: "/admin/blog",
   });
-  if (!post) {
-    return { error: "Post tidak ditemukan." };
-  }
-
-  await prisma.blogPost.delete({ where: { id } });
-  if (post.coverImageUrl) {
-    await removeCoverImage(post.coverImageUrl);
-  }
-  revalidatePost(post.slug);
-  redirect("/admin/blog");
 }
 
 export async function toggleMessageRead(id: string, isRead: boolean) {

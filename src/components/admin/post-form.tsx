@@ -80,7 +80,7 @@ export function PostForm({ mode, post }: PostFormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex max-w-2xl flex-col gap-5">
       <div className="flex flex-col gap-2">
-        <Label htmlFor="title">Title</Label>
+        <Label htmlFor="title">Judul</Label>
         <Input
           id="title"
           value={form.title}
@@ -104,7 +104,7 @@ export function PostForm({ mode, post }: PostFormProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Label htmlFor="excerpt">Excerpt</Label>
+        <Label htmlFor="excerpt">Ringkasan</Label>
         <Textarea
           id="excerpt"
           rows={2}
@@ -117,7 +117,7 @@ export function PostForm({ mode, post }: PostFormProps) {
       <MarkdownEditor
         value={form.content}
         onChange={(v) => set("content", v)}
-        label="Content (markdown)"
+        label="Konten (markdown)"
       />
 
       <ImageUpload
@@ -140,7 +140,7 @@ export function PostForm({ mode, post }: PostFormProps) {
           checked={form.published}
           onCheckedChange={(v) => set("published", Boolean(v))}
         />
-        Published
+        Terbitkan
       </label>
 
       {error && <p className="text-sm text-destructive">{error}</p>}

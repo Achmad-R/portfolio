@@ -9,8 +9,8 @@ import { Badge } from "@/components/ui/badge";
 export default async function HomePage() {
   const [projects, posts] = await Promise.all([
     prisma.project.findMany({
-      where: { published: true },
-      orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
+      where: { published: true, featured: true },
+      orderBy: { createdAt: "desc" },
       take: 3,
     }),
     prisma.blogPost.findMany({

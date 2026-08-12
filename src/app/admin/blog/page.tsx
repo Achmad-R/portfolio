@@ -44,7 +44,7 @@ export default async function AdminBlogPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Title</TableHead>
+                <TableHead>Judul</TableHead>
                 <TableHead>Tags</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right">Aksi</TableHead>

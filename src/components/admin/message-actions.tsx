@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { MailOpen, Mail, Trash2 } from "lucide-react";
 import { toggleMessageRead, deleteMessage } from "@/lib/actions";
 
@@ -10,6 +11,7 @@ interface MessageActionsProps {
 }
 
 export function MessageActions({ id, isRead }: MessageActionsProps) {
+  const router = useRouter();
   const [read, setRead] = useState(isRead);
   const [deleting, setDeleting] = useState(false);
 
@@ -18,8 +20,13 @@ export function MessageActions({ id, isRead }: MessageActionsProps) {
       <button
         type="button"
         onClick={async () => {
-          setRead((v) => !v);
-          await toggleMessageRead(id, !read);
+          const next = !read;
+          setRead(next);
+          try {
+            await toggleMessageRead(id, next);
+          } catch {
+            setRead(!next);
+          }
         }}
         className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm text-muted-foreground hover:text-foreground"
         title={read ? "Tandai belum dibaca" : "Tandai sudah dibaca"}
@@ -33,7 +40,12 @@ export function MessageActions({ id, isRead }: MessageActionsProps) {
         onClick={async () => {
           if (window.confirm("Yakin ingin menghapus pesan ini?")) {
             setDeleting(true);
-            await deleteMessage(id);
+            try {
+              await deleteMessage(id);
+              router.refresh();
+            } catch {
+              setDeleting(false);
+            }
           }
         }}
         className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm text-destructive hover:opacity-80"

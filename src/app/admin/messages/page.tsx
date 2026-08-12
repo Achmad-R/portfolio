@@ -18,7 +18,7 @@ export default async function AdminMessagesPage() {
       <h1 className="text-2xl font-bold tracking-tight">
         <span className="text-primary">$</span> messages
         <span className="ml-2 font-mono text-sm text-muted-foreground">
-          ({messages.filter((m) => !m.isRead).length} unread)
+          ({messages.filter((m) => !m.isRead).length} belum dibaca)
         </span>
       </h1>
 
