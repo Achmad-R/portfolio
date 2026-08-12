@@ -76,7 +76,7 @@ export default async function AdminBlogPage() {
                       >
                         <Pencil className="size-4" /> Edit
                       </Link>
-                      <ConfirmDelete action={() => deletePost(post.id)} />
+                      <ConfirmDelete action={deletePost} entityId={post.id} />
                     </div>
                   </TableCell>
                 </TableRow>

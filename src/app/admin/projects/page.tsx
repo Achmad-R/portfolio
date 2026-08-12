@@ -84,7 +84,7 @@ export default async function AdminProjectsPage() {
                       >
                         <Pencil className="size-4" /> Edit
                       </Link>
-                      <ConfirmDelete action={() => deleteProject(project.id)} />
+                      <ConfirmDelete action={deleteProject} entityId={project.id} />
                     </div>
                   </TableCell>
                 </TableRow>
