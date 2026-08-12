@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -14,8 +15,14 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
+function isActive(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
@@ -29,8 +36,18 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className={cn(
+                "text-sm transition-colors hover:text-foreground",
+                isActive(pathname, link.href)
+                  ? "text-foreground"
+                  : "text-muted-foreground"
+              )}
             >
+              {isActive(pathname, link.href) && (
+                <span className="mr-1 text-primary" aria-hidden="true">
+                  ›
+                </span>
+              )}
               {link.label}
             </Link>
           ))}
@@ -38,7 +55,7 @@ export function Navbar() {
             href={`mailto:${site.email}`}
             className="rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Hire me
+            Contact
           </a>
         </div>
 
@@ -46,6 +63,7 @@ export function Navbar() {
           className="md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
@@ -63,7 +81,12 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+              className={cn(
+                "rounded px-2 py-1.5 text-sm hover:bg-accent hover:text-foreground",
+                isActive(pathname, link.href)
+                  ? "text-foreground"
+                  : "text-muted-foreground"
+              )}
             >
               {link.label}
             </Link>

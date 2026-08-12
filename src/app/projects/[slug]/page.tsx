@@ -9,6 +9,7 @@ import { site } from "@/lib/site";
 import { storagePublicUrl } from "@/lib/supabase";
 import { Markdown } from "@/components/markdown";
 import { Badge } from "@/components/ui/badge";
+import { PromptLine } from "@/components/prompt-line";
 import { formatDate } from "@/lib/date";
 
 export const revalidate = 3600;
@@ -65,6 +66,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </Link>
 
       <header className="flex flex-col gap-4">
+        <PromptLine command={`cat ~/projects/${project.slug}`} />
         <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-muted-foreground">
           <span>{formatDate(project.createdAt)}</span>
           <span>·</span>

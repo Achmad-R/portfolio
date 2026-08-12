@@ -8,6 +8,7 @@ import { site } from "@/lib/site";
 import { storagePublicUrl } from "@/lib/supabase";
 import { Markdown } from "@/components/markdown";
 import { Badge } from "@/components/ui/badge";
+import { PromptLine } from "@/components/prompt-line";
 import { formatDate } from "@/lib/date";
 
 export const revalidate = 3600;
@@ -64,6 +65,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </Link>
 
       <header className="flex flex-col gap-4">
+        <PromptLine command={`cat ~/blog/${post.slug}.md`} />
         <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
           <span>{formatDate(post.createdAt)}</span>
           {post.tags.map((tag) => (
