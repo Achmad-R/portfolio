@@ -41,7 +41,13 @@ export async function POST(request: NextRequest) {
   }
 
   await prisma.message.create({
-    data: { ...parsed.data, ip },
+    data: {
+      name: parsed.data.name,
+      email: parsed.data.email,
+      subject: parsed.data.subject,
+      message: parsed.data.message,
+      ip,
+    },
   });
 
   if (process.env.RESEND_API_KEY) {
