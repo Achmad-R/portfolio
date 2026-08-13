@@ -126,9 +126,11 @@ model Message   { id, name, email, subject, message, isRead Boolean @default(fal
 
 ### 4.5 Desain UI
 
-- Tailwind v4 + shadcn/ui; **dark theme**, aksen hijau terminal `#00FF9C`, font mono **JetBrains Mono** untuk judul, sans (Geist) untuk body.
+- Tailwind v4 + shadcn/ui; **dark theme "Midnight Marigold"**: bg `#0B0E14` (midnight), surface `#12161F`, teks `#E6EAF2`, muted `#8A94A6`, aksen utama marigold `#E8A33D`, live `#86A873`, destructive `#D65A4A`, border `#1F2633`, radius 12px.
+- Tipografi: display **Bricolage Grotesque** (judul, track ketat), body **DM Sans**, mono **JetBrains Mono hanya untuk data kecil** (tanggal, tag, meta).
 - Konten publik **English**; UI admin **Bahasa Indonesia**.
 - Site identity terpusat di `src/lib/site.ts` (name: "Achmad Ridho", tagline: "Fullstack Developer", email: `achmad.ridho.st@gmail.com`).
+- Riwayat desain sebelumnya: lihat `firstDesign.md` (Terminal Alive / Steel & Tungsten, ditolak owner 8/2026).
 
 ---
 

@@ -26,12 +26,12 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4">
-        <Link href="/" className="font-heading text-sm font-semibold text-primary">
-          ~/achmad-ridho
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+        <Link href="/" className="text-base font-bold tracking-tight">
+          {site.name}
         </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -39,21 +39,16 @@ export function Navbar() {
               className={cn(
                 "text-sm transition-colors hover:text-foreground",
                 isActive(pathname, link.href)
-                  ? "text-foreground"
+                  ? "font-medium text-foreground"
                   : "text-muted-foreground"
               )}
             >
-              {isActive(pathname, link.href) && (
-                <span className="mr-1 text-primary" aria-hidden="true">
-                  ›
-                </span>
-              )}
               {link.label}
             </Link>
           ))}
           <a
             href={`mailto:${site.email}`}
-            className="rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Contact
           </a>
@@ -82,9 +77,9 @@ export function Navbar() {
               href={link.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "rounded px-2 py-1.5 text-sm hover:bg-accent hover:text-foreground",
+                "rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-foreground",
                 isActive(pathname, link.href)
-                  ? "text-foreground"
+                  ? "font-medium text-foreground"
                   : "text-muted-foreground"
               )}
             >

@@ -40,26 +40,22 @@ const history = [
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto flex max-w-3xl flex-col gap-12 px-4 py-16">
+    <div className="mx-auto flex max-w-3xl flex-col gap-14 px-4 py-16 sm:py-24">
       <section className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">about</h1>
-        <div className="font-mono text-xs text-muted-foreground">
-          <span className="text-primary">NAME</span>
-          <span className="text-muted-foreground">(1)</span> — {site.name}, {site.tagline}.
-          Building fast, maintainable web applications from Jakarta — clean architecture,
-          sensible tooling, interfaces that feel right.
-        </div>
-        <p className="text-muted-foreground">
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">About</h1>
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          Hi, I&apos;m {site.name} — {site.tagline}. I build fast, maintainable web
+          applications, and I care about the details: clean architecture, sensible
+          tooling, and interfaces that feel right.
+        </p>
+        <p className="text-lg leading-relaxed text-muted-foreground">
           When I&apos;m not shipping code, I&apos;m writing about what I learn on this
           blog, or contributing to open source.
         </p>
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="font-heading text-lg font-semibold">
-          <span className="text-primary">STACK</span>
-          <span className="text-muted-foreground">(2)</span>
-        </h2>
+        <h2 className="text-2xl font-bold tracking-tight">Stack</h2>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <Badge key={skill} variant="outline" className="font-mono text-xs">
@@ -70,17 +66,18 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="font-heading text-lg font-semibold">
-          <span className="text-primary">HISTORY</span>
-          <span className="text-muted-foreground">(3)</span>
-        </h2>
-        <div className="flex flex-col gap-6">
+        <h2 className="text-2xl font-bold tracking-tight">Timeline</h2>
+        <div className="flex flex-col gap-8">
           {history.map((item) => (
-            <div key={item.title} className="flex gap-4">
-              <div className="font-mono text-xs text-primary">{item.year}</div>
+            <div key={item.title} className="grid gap-2 sm:grid-cols-[100px_1fr] sm:gap-6">
+              <div className="font-mono text-sm font-medium text-primary">
+                {item.year}
+              </div>
               <div className="flex flex-col gap-1">
-                <h3 className="font-heading text-sm font-semibold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.text}</p>
+                <h3 className="text-lg font-semibold tracking-tight">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {item.text}
+                </p>
               </div>
             </div>
           ))}

@@ -9,7 +9,6 @@ import { site } from "@/lib/site";
 import { storagePublicUrl } from "@/lib/supabase";
 import { Markdown } from "@/components/markdown";
 import { Badge } from "@/components/ui/badge";
-import { PromptLine } from "@/components/prompt-line";
 import { formatDate } from "@/lib/date";
 
 export const revalidate = 3600;
@@ -66,13 +65,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </Link>
 
       <header className="flex flex-col gap-4">
-        <PromptLine command={`cat ~/projects/${project.slug}`} />
         <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-muted-foreground">
           <span>{formatDate(project.createdAt)}</span>
-          <span>·</span>
-          <span>~/projects/{project.slug}</span>
+          {project.featured && <Badge className="font-mono text-[10px]">Featured</Badge>}
         </div>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{project.title}</h1>
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{project.title}</h1>
         <p className="text-lg text-muted-foreground">{project.shortDescription}</p>
         <div className="flex flex-wrap gap-1.5">
           {project.techStack.map((tech) => (
