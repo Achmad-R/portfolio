@@ -70,6 +70,7 @@ export function ContactForm() {
       <Label htmlFor={key}>{label}</Label>
       <Input
         id={key}
+        name={key}
         type={type}
         value={formData[key]}
         onChange={(e) => setFormData((f) => ({ ...f, [key]: e.target.value }))}
@@ -100,6 +101,7 @@ export function ContactForm() {
         <Label htmlFor="message">Message</Label>
         <Textarea
           id="message"
+          name="message"
           rows={6}
           value={formData.message}
           onChange={(e) => setFormData((f) => ({ ...f, message: e.target.value }))}
