@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import { site } from "@/lib/site";
@@ -50,19 +50,23 @@ export async function POST(request: NextRequest) {
     },
   });
 
+  // Kirim email setelah response terkirim — tidak pernah memblokir client.
   if (process.env.RESEND_API_KEY) {
-    try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
-        from: `${site.name} Contact <onboarding@resend.dev>`,
-        to: process.env.CONTACT_NOTIFY_EMAIL ?? site.email,
-        replyTo: parsed.data.email,
-        subject: `[Portfolio] ${parsed.data.subject}`,
-        text: `New contact message from ${parsed.data.name} <${parsed.data.email}>\n\nSubject: ${parsed.data.subject}\n\n${parsed.data.message}`,
-      });
-    } catch {
-      // Pesan tetap tersimpan di DB walau email gagal — jangan bocorkan detail.
-    }
+    const { name, email, subject, message } = parsed.data;
+    after(() => {
+      try {
+        const resend = new Resend(process.env.RESEND_API_KEY!);
+        resend.emails.send({
+          from: `${site.name} Contact <onboarding@resend.dev>`,
+          to: process.env.CONTACT_NOTIFY_EMAIL ?? site.email,
+          replyTo: email,
+          subject: `[Portfolio] ${subject}`,
+          text: `New contact message from ${name} <${email}>\n\nSubject: ${subject}\n\n${message}`,
+        });
+      } catch {
+        // Pesan tetap tersimpan di DB walau email gagal — jangan bocorkan detail.
+      }
+    });
   }
 
   return NextResponse.json({ ok: true }, { status: 200 });

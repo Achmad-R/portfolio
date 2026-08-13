@@ -12,6 +12,7 @@ type FormState = "idle" | "submitting" | "success" | "error";
 export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [lastError, setLastError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,7 +24,8 @@ export function ContactForm() {
     event.preventDefault();
     setErrors({});
 
-    const form = new FormData(event.currentTarget);
+    const formEl = event.currentTarget;
+    const form = new FormData(formEl);
     const payload = {
       name: form.get("name")?.toString() ?? "",
       email: form.get("email")?.toString() ?? "",
@@ -51,12 +53,17 @@ export function ContactForm() {
       });
       if (res.ok) {
         setState("success");
-        event.currentTarget.reset();
+        setLastError(null);
+        formEl.reset();
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
+        setLastError(`HTTP ${res.status}`);
         setState("error");
       }
-    } catch {
+    } catch (err) {
+      setLastError(
+        err instanceof Error ? `${err.name}: ${err.message}` : String(err)
+      );
       setState("error");
     }
   }
@@ -118,9 +125,14 @@ export function ContactForm() {
           <p className="text-sm text-primary">Message sent — I&apos;ll get back to you soon.</p>
         )}
         {state === "error" && (
-          <p className="text-sm text-destructive">
-            Something went wrong. Try again in a few minutes.
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-sm text-destructive">
+              Something went wrong. Try again in a few minutes.
+            </p>
+            {lastError && (
+              <p className="font-mono text-xs text-muted-foreground">{lastError}</p>
+            )}
+          </div>
         )}
       </div>
     </form>
