@@ -126,13 +126,14 @@ model Message   { id, name, email, subject, message, isRead Boolean @default(fal
 
 ### 4.5 Desain UI
 
-- Tailwind v4 + shadcn/ui; sistem desain **"Pinterest"** (mengikuti `DESIGN-pinterest.md`): CTA merah `#E60023` (pressed `#CC001F`) sebagai satu-satunya aksen jenuh, chrome cream/light (`canvas #FFFFFF`, `surface-soft #FBFBF9`, `surface-card #F6F6F3`), teks `body #33332E`, radius **16px** (dominan) / **32px** (kartu besar, modal) / **pill**, tanpa shadow pada kartu, masonry pin grid 8px gutter.
-- **Mode light + dark via toggle** (persist localStorage + preferensi sistem; default light). Dark: adaptasi hangat token (bg `#1A1817`, card `#242120`, teks `#F5F5F3`), merah CTA tetap `#E60023`.
-- Tipografi: **Inter** (400/500/600/700) sebagai substitusi Pin Sans di semua peran teks; **tanpa serif & tanpa monospace** pada chrome (mono hanya dipertahankan untuk blok kode dalam konten markdown).
-- Fokus input: double-ring (border 2px ink + outline 4px `#435EE5`); feedback form: pill sukses `#C7F0DA`/`#103C25`, error `#9E0A0A` (inline, tanpa toast lib).
+- Tailwind v4 + shadcn/ui; sistem desain **"Figma"** (mengikuti `DESIGN-figma.md`): monokrom hitam-putih editorial, CTA pill (hitam di atas putih, putih di atas hitam), pastel **color-block sections** (`block-lime #DCE8B1` untuk Stack, `block-navy #1F1D3D` untuk Timeline, `block-coral #F3C9B6` untuk CTA) dengan radius `lg` 24px + padding 48px, kartu putih `hairline` border, tanpa shadow pada kartu.
+- **Mode light + dark via toggle** (persist localStorage + preferensi sistem; default light). Dark = inversi netral (bg `#0D0D0D`, card `#161616`, ink `#F2F2F2`, tombol putih/teks hitam); **pastel color blocks tetap sama** di kedua mode.
+- Tipografi: **Inter variable** (bobot 320–700) sebagai substitusi figmaSans di semua peran; **JetBrains Mono** HANYA untuk eyebrow/caption uppercase kecil (token figmaMono). Display hero ~80px dengan negative tracking (-1.72px).
+- Radius: sm 6 / md 8 / lg 24 / xl 32 / pill; CTA = pill (rounded-full). Fokus input via ring (2px ink), bukan ubah fill.
+- Feedback form: sukses = teks hijau `#1EA64A` (semantic-success, tanpa pill pastel); error merah inline.
 - Konten publik **English**; UI admin **Bahasa Indonesia**.
 - Site identity terpusat di `src/lib/site.ts` (name: "Achmad Ridho", tagline: "Fullstack Developer", email: `achmad.ridho.st@gmail.com`).
-- Riwayat desain sebelumnya: lihat `firstDesign.md` (Terminal Alive / Steel & Tungsten) dan `secondDesign.md` (Midnight Marigold), keduanya ditolak owner 8/2026.
+- Riwayat desain sebelumnya (arsip): `firstDesign.md` (Terminal Alive), `secondDesign.md` (Midnight Marigold), `thirdDesign.md` (Pinterest), `DESIGN-pinterest.md` (spek Pinterest) — semuanya ditolak owner 8/2026.
 
 ---
 

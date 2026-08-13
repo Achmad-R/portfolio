@@ -54,17 +54,17 @@ export default async function AdminDashboardPage() {
       <div className="grid gap-4 sm:grid-cols-3">
         {stats.map((stat) => (
           <Link key={stat.label} href={stat.href}>
-            <Card className="transition-colors hover:border-primary/50">
+            <Card className="transition-colors hover:border-ink/40">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">
                   {stat.label}
                 </CardTitle>
-                <stat.icon className="size-4 text-primary" />
+                <stat.icon className="size-4 text-ink" />
               </CardHeader>
               <CardContent className="flex items-center gap-2">
-                <span className="text-3xl font-bold text-ink">{stat.value}</span>
+                <span className="text-3xl font-[340] text-ink">{stat.value}</span>
                 {stat.badge && (
-                  <Badge variant="outline" className="text-[10px] text-primary">
+                  <Badge variant="outline" className="text-[10px] text-ink">
                     {stat.badge}
                   </Badge>
                 )}
@@ -79,7 +79,7 @@ export default async function AdminDashboardPage() {
           <h2 className="text-lg font-bold text-ink">Pesan belum dibaca</h2>
           <Link
             href="/admin/messages"
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-ink"
           >
             Semua <ArrowRight className="size-4" />
           </Link>
@@ -87,7 +87,7 @@ export default async function AdminDashboardPage() {
         {recentMessages.length === 0 ? (
           <p className="text-sm text-muted-foreground">Tidak ada pesan belum dibaca.</p>
         ) : (
-          <div className="flex flex-col divide-y divide-border rounded-md bg-surface-card">
+          <div className="flex flex-col divide-y divide-border overflow-hidden rounded-[24px] border border-border bg-card">
             {recentMessages.map((message) => (
               <div key={message.id} className="flex items-center justify-between gap-4 p-4">
                 <div className="min-w-0 flex-1">

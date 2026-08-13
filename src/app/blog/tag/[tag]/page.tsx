@@ -47,7 +47,7 @@ export default async function TagPage({ params, searchParams }: PageProps) {
           ← All posts
         </Link>
         <div className="flex items-center gap-3">
-          <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+          <h1 className="text-5xl font-[340] leading-[1.1] tracking-[-0.96px] text-ink sm:text-6xl">
             Posts tagged
           </h1>
           <Badge variant="secondary">#{decodedTag}</Badge>
@@ -58,7 +58,7 @@ export default async function TagPage({ params, searchParams }: PageProps) {
         <p className="text-muted-foreground">No posts with this tag yet.</p>
       ) : (
         <>
-          <div className="flex flex-col divide-y divide-border overflow-hidden rounded-md bg-surface-card">
+          <div className="flex flex-col divide-y divide-border overflow-hidden rounded-[24px] border border-border bg-background">
             {posts.map((post) => (
               <PostRow key={post.id} post={post} />
             ))}

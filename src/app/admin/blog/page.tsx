@@ -29,7 +29,7 @@ export default async function AdminBlogPage() {
         <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">Blog</h1>
         <Link
           href="/admin/blog/new"
-          className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
         >
           <Plus className="size-4" /> Post baru
         </Link>
@@ -38,7 +38,7 @@ export default async function AdminBlogPage() {
       {posts.length === 0 ? (
         <p className="text-sm text-muted-foreground">Belum ada post.</p>
       ) : (
-        <div className="overflow-hidden rounded-md bg-surface-card">
+        <div className="overflow-hidden rounded-[24px] border border-border bg-card">
           <Table>
             <TableHeader>
               <TableRow>
@@ -57,7 +57,7 @@ export default async function AdminBlogPage() {
                   </TableCell>
                   <TableCell>
                     {post.published ? (
-                      <Badge variant="outline" className="text-[10px] text-primary">
+                      <Badge variant="outline" className="text-[10px] text-ink">
                         published
                       </Badge>
                     ) : (

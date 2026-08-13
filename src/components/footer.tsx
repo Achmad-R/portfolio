@@ -63,8 +63,8 @@ function FooterLink({
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background px-6 py-8">
-      <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t bg-background px-8 py-16">
+      <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <FooterColumn title="Explore">
           {exploreLinks.map((l) => (
             <FooterLink key={l.href} href={l.href} label={l.label} external={false} />

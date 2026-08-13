@@ -28,7 +28,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
         <div className="flex items-center gap-4">
           <button
             className="md:hidden"
@@ -40,7 +40,7 @@ export function Navbar() {
           </button>
           <Link
             href="/"
-            className="text-base font-bold tracking-tight text-ink"
+            className="text-base font-semibold tracking-tight text-ink"
           >
             {site.name}
           </Link>
@@ -54,7 +54,7 @@ export function Navbar() {
               className={cn(
                 "relative text-sm transition-colors hover:text-ink",
                 isActive(pathname, link.href)
-                  ? "font-semibold text-ink after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:bg-primary"
+                  ? "font-semibold text-ink after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-ink"
                   : "text-muted-foreground"
               )}
             >
@@ -66,7 +66,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-card text-ink transition-colors hover:bg-secondary-bg"
+            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-accent"
             aria-label={
               theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
             }
@@ -79,7 +79,7 @@ export function Navbar() {
           </button>
           <a
             href={`mailto:${site.email}`}
-            className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Contact
           </a>

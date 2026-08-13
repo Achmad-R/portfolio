@@ -122,7 +122,7 @@ export function ContactForm() {
           {state === "submitting" ? "Sending..." : "Send message"}
         </Button>
         {state === "success" && (
-          <span className="rounded-full bg-success-pale px-4 py-2 text-sm font-semibold text-success-deep">
+          <span className="text-sm font-semibold text-success-deep">
             Message sent — I&apos;ll get back to you soon.
           </span>
         )}

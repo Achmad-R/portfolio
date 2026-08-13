@@ -59,17 +59,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     <article className="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-16">
       <Link
         href="/projects"
-        className="inline-flex w-fit items-center gap-1 text-sm text-muted-foreground hover:text-primary"
+        className="inline-flex w-fit items-center gap-1 text-sm text-muted-foreground hover:text-ink"
       >
         <ArrowLeft className="size-4" /> All projects
       </Link>
 
       <header className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.54px] text-muted-foreground">
           <span>{formatDate(project.createdAt)}</span>
           {project.featured && <Badge>Featured</Badge>}
         </div>
-        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+        <h1 className="text-5xl font-[340] leading-[1.1] tracking-[-0.96px] text-ink sm:text-6xl">
           {project.title}
         </h1>
         <p className="text-lg text-muted-foreground">{project.shortDescription}</p>
@@ -86,7 +86,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
             >
               <ExternalLink className="size-4" /> Live demo
             </a>
@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 items-center gap-2 rounded-md border border-input bg-background px-5 text-sm font-bold text-ink transition-colors hover:bg-surface-card"
+              className="inline-flex h-10 items-center gap-2 rounded-full border border-input bg-background px-6 text-sm font-bold text-ink transition-colors hover:bg-muted"
             >
               <GithubIcon className="size-4" /> Source code
             </a>
@@ -105,7 +105,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </header>
 
       {project.coverImageUrl && (
-        <div className="relative aspect-video overflow-hidden rounded-md bg-surface-card">
+        <div className="relative aspect-video overflow-hidden rounded-[24px] border border-border">
           <Image
             src={storagePublicUrl(project.coverImageUrl)}
             alt={project.title}

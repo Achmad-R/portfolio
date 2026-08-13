@@ -29,8 +29,8 @@ export default async function AdminMessagesPage() {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`rounded-md bg-surface-card p-5 ${
-                !message.isRead ? "ring-1 ring-primary/40" : ""
+              className={`rounded-[24px] border border-border bg-card p-6 ${
+                !message.isRead ? "ring-1 ring-ink" : ""
               }`}
             >
               <div className="flex flex-wrap items-start justify-between gap-3">

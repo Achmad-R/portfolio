@@ -42,7 +42,7 @@ export default function AboutPage() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-14 px-4 py-16 sm:py-24">
       <section className="flex flex-col gap-4">
-        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+        <h1 className="text-5xl font-[340] leading-[1.1] tracking-[-0.96px] text-ink sm:text-6xl">
           About
         </h1>
         <p className="text-lg leading-relaxed text-muted-foreground">
@@ -57,7 +57,9 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-[28px] font-bold tracking-[-1.2px] text-ink">Stack</h2>
+        <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px] text-ink">
+          Stack
+        </h2>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <Badge key={skill} variant="outline">
@@ -68,11 +70,15 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col gap-4">
-        <h2 className="text-[28px] font-bold tracking-[-1.2px] text-ink">Timeline</h2>
+        <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px] text-ink">
+          Timeline
+        </h2>
         <div className="flex flex-col gap-8">
           {history.map((item) => (
             <div key={item.title} className="grid gap-2 sm:grid-cols-[100px_1fr] sm:gap-6">
-              <div className="text-sm font-semibold text-ink">{item.year}</div>
+              <div className="font-mono text-xs uppercase tracking-[0.54px] text-muted-foreground">
+                {item.year}
+              </div>
               <div className="flex flex-col gap-1">
                 <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">

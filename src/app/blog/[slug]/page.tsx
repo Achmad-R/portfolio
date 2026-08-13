@@ -58,30 +58,30 @@ export default async function BlogPostPage({ params }: PageProps) {
     <article className="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-16">
       <Link
         href="/blog"
-        className="inline-flex w-fit items-center gap-1 text-sm text-muted-foreground hover:text-primary"
+        className="inline-flex w-fit items-center gap-1 text-sm text-muted-foreground hover:text-ink"
       >
         <ArrowLeft className="size-4" /> All posts
       </Link>
 
       <header className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.54px] text-muted-foreground">
           <span>{formatDate(post.createdAt)}</span>
           {post.tags.map((tag) => (
             <Link key={tag} href={`/blog/tag/${tag}`}>
-              <Badge variant="secondary" className="hover:text-primary">
+              <Badge variant="secondary" className="hover:opacity-80">
                 #{tag}
               </Badge>
             </Link>
           ))}
         </div>
-        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+        <h1 className="text-5xl font-[340] leading-[1.1] tracking-[-0.96px] text-ink sm:text-6xl">
           {post.title}
         </h1>
         <p className="text-lg text-muted-foreground">{post.excerpt}</p>
       </header>
 
       {post.coverImageUrl && (
-        <div className="relative aspect-video overflow-hidden rounded-md bg-surface-card">
+        <div className="relative aspect-video overflow-hidden rounded-[24px] border border-border">
           <Image
             src={storagePublicUrl(post.coverImageUrl)}
             alt={post.title}
