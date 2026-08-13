@@ -6,16 +6,16 @@ export function PostRow({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-4 transition-colors hover:bg-accent"
+      className="group flex flex-wrap items-baseline gap-x-4 gap-y-1 px-5 py-4 transition-colors hover:bg-secondary-bg"
     >
-      <span className="w-24 shrink-0 font-mono text-xs text-muted-foreground">
+      <span className="w-24 shrink-0 text-xs text-muted-foreground">
         {formatDate(post.createdAt)}
       </span>
-      <span className="flex-1 truncate text-base font-medium transition-colors group-hover:text-primary">
+      <span className="flex-1 truncate text-base font-semibold text-ink">
         {post.title}
       </span>
       {post.tags.length > 0 && (
-        <span className="font-mono text-[10px] text-muted-foreground">
+        <span className="text-xs text-muted-foreground">
           {post.tags.map((tag) => `#${tag}`).join(" ")}
         </span>
       )}

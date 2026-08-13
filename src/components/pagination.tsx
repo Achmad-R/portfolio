@@ -28,7 +28,7 @@ export function Pagination({ basePath, currentPage, totalPages }: PaginationProp
       >
         <ChevronLeft className="size-4" /> Prev
       </Link>
-      <span className="px-2 font-mono text-sm text-muted-foreground">
+      <span className="px-2 text-sm text-muted-foreground">
         {currentPage} / {totalPages}
       </span>
       <Link

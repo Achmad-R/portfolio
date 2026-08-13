@@ -28,9 +28,9 @@ export default async function AdminLayout({
         <aside className="flex w-56 shrink-0 flex-col border-r bg-sidebar">
           <Link
             href="/admin"
-            className="border-b px-4 py-4 font-heading text-sm font-semibold text-primary"
+            className="border-b px-4 py-4 text-sm font-semibold text-ink"
           >
-            ~/admin
+            Admin
           </Link>
           <nav className="flex flex-1 flex-col gap-1 p-3">
             {nav.map((item) => (

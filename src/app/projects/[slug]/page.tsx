@@ -65,15 +65,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </Link>
 
       <header className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
           <span>{formatDate(project.createdAt)}</span>
-          {project.featured && <Badge className="font-mono text-[10px]">Featured</Badge>}
+          {project.featured && <Badge>Featured</Badge>}
         </div>
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{project.title}</h1>
+        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+          {project.title}
+        </h1>
         <p className="text-lg text-muted-foreground">{project.shortDescription}</p>
         <div className="flex flex-wrap gap-1.5">
           {project.techStack.map((tech) => (
-            <Badge key={tech} variant="outline" className="font-mono text-xs">
+            <Badge key={tech} variant="outline">
               {tech}
             </Badge>
           ))}
@@ -84,7 +86,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
             >
               <ExternalLink className="size-4" /> Live demo
             </a>
@@ -94,7 +96,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
+              className="inline-flex h-11 items-center gap-2 rounded-md border border-input bg-background px-5 text-sm font-bold text-ink transition-colors hover:bg-surface-card"
             >
               <GithubIcon className="size-4" /> Source code
             </a>
@@ -103,7 +105,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </header>
 
       {project.coverImageUrl && (
-        <div className="relative aspect-video overflow-hidden rounded-lg border">
+        <div className="relative aspect-video overflow-hidden rounded-md bg-surface-card">
           <Image
             src={storagePublicUrl(project.coverImageUrl)}
             alt={project.title}

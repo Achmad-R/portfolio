@@ -45,9 +45,7 @@ export default async function AdminDashboardPage() {
   return (
     <div className="flex flex-col gap-8 p-6">
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-bold tracking-tight">
-          <span className="text-primary">$</span> dashboard
-        </h1>
+        <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">Dashboard</h1>
         <p className="text-sm text-muted-foreground">
           Masuk sebagai {session.user.email}
         </p>
@@ -64,9 +62,9 @@ export default async function AdminDashboardPage() {
                 <stat.icon className="size-4 text-primary" />
               </CardHeader>
               <CardContent className="flex items-center gap-2">
-                <span className="font-heading text-3xl font-bold">{stat.value}</span>
+                <span className="text-3xl font-bold text-ink">{stat.value}</span>
                 {stat.badge && (
-                  <Badge variant="outline" className="font-mono text-[10px] text-primary">
+                  <Badge variant="outline" className="text-[10px] text-primary">
                     {stat.badge}
                   </Badge>
                 )}
@@ -78,9 +76,7 @@ export default async function AdminDashboardPage() {
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <h2 className="font-heading text-lg font-semibold">
-            <span className="text-primary">#</span> Pesan belum dibaca
-          </h2>
+          <h2 className="text-lg font-bold text-ink">Pesan belum dibaca</h2>
           <Link
             href="/admin/messages"
             className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
@@ -91,7 +87,7 @@ export default async function AdminDashboardPage() {
         {recentMessages.length === 0 ? (
           <p className="text-sm text-muted-foreground">Tidak ada pesan belum dibaca.</p>
         ) : (
-          <div className="flex flex-col divide-y rounded-lg border bg-card">
+          <div className="flex flex-col divide-y divide-border rounded-md bg-surface-card">
             {recentMessages.map((message) => (
               <div key={message.id} className="flex items-center justify-between gap-4 p-4">
                 <div className="min-w-0 flex-1">
@@ -99,10 +95,10 @@ export default async function AdminDashboardPage() {
                     {!message.isRead && (
                       <span className="size-2 shrink-0 rounded-full bg-primary" />
                     )}
-                    <span className="truncate font-heading text-sm font-semibold">
+                    <span className="truncate text-sm font-semibold text-ink">
                       {message.name}
                     </span>
-                    <span className="truncate font-mono text-xs text-muted-foreground">
+                    <span className="truncate text-xs text-muted-foreground">
                       {message.subject}
                     </span>
                   </div>
@@ -110,7 +106,7 @@ export default async function AdminDashboardPage() {
                     {message.message}
                   </p>
                 </div>
-                <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                <span className="shrink-0 text-xs text-muted-foreground">
                   {formatDateTime(message.createdAt)}
                 </span>
               </div>

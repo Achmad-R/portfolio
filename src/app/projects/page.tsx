@@ -16,7 +16,9 @@ export default async function ProjectsPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:py-24">
       <div className="flex max-w-2xl flex-col gap-3">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">Projects</h1>
+        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+          Projects
+        </h1>
         <p className="text-lg text-muted-foreground">
           A selection of things I&apos;ve built — from fullstack applications to APIs and
           tooling.
@@ -26,7 +28,7 @@ export default async function ProjectsPage() {
       {projects.length === 0 ? (
         <p className="text-muted-foreground">No projects published yet.</p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="columns-1 gap-2 sm:columns-2 lg:columns-3">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

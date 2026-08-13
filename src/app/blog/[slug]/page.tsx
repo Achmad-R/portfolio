@@ -64,22 +64,24 @@ export default async function BlogPostPage({ params }: PageProps) {
       </Link>
 
       <header className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           <span>{formatDate(post.createdAt)}</span>
           {post.tags.map((tag) => (
             <Link key={tag} href={`/blog/tag/${tag}`}>
-              <Badge variant="secondary" className="font-mono text-[10px] hover:text-primary">
+              <Badge variant="secondary" className="hover:text-primary">
                 #{tag}
               </Badge>
             </Link>
           ))}
         </div>
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{post.title}</h1>
+        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+          {post.title}
+        </h1>
         <p className="text-lg text-muted-foreground">{post.excerpt}</p>
       </header>
 
       {post.coverImageUrl && (
-        <div className="relative aspect-video overflow-hidden rounded-lg border">
+        <div className="relative aspect-video overflow-hidden rounded-md bg-surface-card">
           <Image
             src={storagePublicUrl(post.coverImageUrl)}
             alt={post.title}

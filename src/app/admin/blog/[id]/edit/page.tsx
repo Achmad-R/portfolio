@@ -21,9 +21,7 @@ export default async function EditPostPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col gap-6 p-6">
-      <h1 className="text-2xl font-bold tracking-tight">
-        <span className="text-primary">$</span> blog/edit
-      </h1>
+      <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">Edit post</h1>
       <PostForm mode="edit" post={post} />
     </div>
   );

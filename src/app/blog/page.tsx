@@ -32,7 +32,9 @@ export default async function BlogPage({ searchParams }: PageProps) {
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-10 px-4 py-16 sm:py-24">
       <div className="flex max-w-2xl flex-col gap-3">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">Blog</h1>
+        <h1 className="text-[44px] font-bold tracking-[-0.8px] text-ink sm:text-5xl">
+          Blog
+        </h1>
         <p className="text-lg text-muted-foreground">
           Writing about web development, tools, and things I&apos;m learning.
         </p>
@@ -42,7 +44,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
         <p className="text-muted-foreground">No posts published yet.</p>
       ) : (
         <>
-          <div className="flex flex-col divide-y overflow-hidden rounded-xl border bg-card">
+          <div className="flex flex-col divide-y divide-border overflow-hidden rounded-md bg-surface-card">
             {posts.map((post) => (
               <PostRow key={post.id} post={post} />
             ))}

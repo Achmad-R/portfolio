@@ -4,7 +4,7 @@ import rehypeSanitize from "rehype-sanitize";
 
 export function Markdown({ content }: { content: string }) {
   return (
-    <div className="prose prose-invert max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-primary">
+    <div className="prose max-w-none dark:prose-invert prose-headings:text-ink prose-a:text-ink-soft prose-a:no-underline">
       <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
         {content}
       </ReactMarkdown>

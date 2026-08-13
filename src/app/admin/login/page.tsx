@@ -9,8 +9,8 @@ export default function AdminLoginPage() {
   return (
     <div className="flex min-h-dvh items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        <div className="mb-6 text-center font-heading text-sm text-primary">
-          ~/admin — login
+        <div className="mb-6 text-center text-sm font-semibold text-ink">
+          Admin login
         </div>
         <LoginForm />
       </div>

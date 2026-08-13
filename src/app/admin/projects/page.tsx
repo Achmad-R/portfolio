@@ -26,12 +26,10 @@ export default async function AdminProjectsPage() {
   return (
     <div className="flex flex-col gap-6 p-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">
-          <span className="text-primary">$</span> projects
-        </h1>
+        <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">Projects</h1>
         <Link
           href="/admin/projects/new"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
         >
           <Plus className="size-4" /> Project baru
         </Link>
@@ -40,7 +38,7 @@ export default async function AdminProjectsPage() {
       {projects.length === 0 ? (
         <p className="text-sm text-muted-foreground">Belum ada project.</p>
       ) : (
-        <div className="rounded-lg border bg-card">
+        <div className="overflow-hidden rounded-md bg-surface-card">
           <Table>
             <TableHeader>
               <TableRow>
@@ -54,23 +52,23 @@ export default async function AdminProjectsPage() {
               {projects.map((project) => (
                 <TableRow key={project.id}>
                   <TableCell className="font-medium">{project.title}</TableCell>
-                  <TableCell className="font-mono text-xs text-muted-foreground">
+                  <TableCell className="text-xs text-muted-foreground">
                     {project.slug}
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-1">
                       {project.published && (
-                        <Badge variant="outline" className="font-mono text-[10px] text-primary">
+                        <Badge variant="outline" className="text-[10px] text-primary">
                           published
                         </Badge>
                       )}
                       {project.featured && (
-                        <Badge variant="secondary" className="font-mono text-[10px]">
+                        <Badge variant="secondary" className="text-[10px]">
                           featured
                         </Badge>
                       )}
                       {!project.published && (
-                        <Badge variant="secondary" className="font-mono text-[10px]">
+                        <Badge variant="secondary" className="text-[10px]">
                           draft
                         </Badge>
                       )}

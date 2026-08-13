@@ -15,9 +15,9 @@ export default async function AdminMessagesPage() {
 
   return (
     <div className="flex flex-col gap-6 p-6">
-      <h1 className="text-2xl font-bold tracking-tight">
-        <span className="text-primary">$</span> messages
-        <span className="ml-2 font-mono text-sm text-muted-foreground">
+      <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">
+        Messages
+        <span className="ml-2 text-sm font-normal text-muted-foreground">
           ({messages.filter((m) => !m.isRead).length} belum dibaca)
         </span>
       </h1>
@@ -29,8 +29,8 @@ export default async function AdminMessagesPage() {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`rounded-lg border bg-card p-5 ${
-                !message.isRead ? "border-primary/40" : ""
+              className={`rounded-md bg-surface-card p-5 ${
+                !message.isRead ? "ring-1 ring-primary/40" : ""
               }`}
             >
               <div className="flex flex-wrap items-start justify-between gap-3">
@@ -39,18 +39,18 @@ export default async function AdminMessagesPage() {
                     {!message.isRead && (
                       <span className="size-2 rounded-full bg-primary" />
                     )}
-                    <span className="font-heading text-base font-semibold">
+                    <span className="text-base font-semibold text-ink">
                       {message.name}
                     </span>
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="text-xs text-muted-foreground">
                       &lt;{message.email}&gt;
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <Badge variant="secondary" className="font-mono text-[10px]">
+                    <Badge variant="secondary" className="text-[10px]">
                       {message.subject}
                     </Badge>
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="text-xs text-muted-foreground">
                       {formatDateTime(message.createdAt)}
                     </span>
                   </div>

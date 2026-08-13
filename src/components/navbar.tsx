@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/components/theme-provider";
 
 const links = [
   { href: "/", label: "Home" },
@@ -23,13 +24,27 @@ function isActive(pathname: string, href: string): boolean {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="text-base font-bold tracking-tight">
-          {site.name}
-        </Link>
+    <header className="sticky top-0 z-50 border-b bg-background">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
+        <div className="flex items-center gap-4">
+          <button
+            className="md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+          <Link
+            href="/"
+            className="text-base font-bold tracking-tight text-ink"
+          >
+            {site.name}
+          </Link>
+        </div>
 
         <div className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
@@ -37,37 +52,44 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm transition-colors hover:text-foreground",
+                "relative text-sm transition-colors hover:text-ink",
                 isActive(pathname, link.href)
-                  ? "font-medium text-foreground"
+                  ? "font-semibold text-ink after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:bg-primary"
                   : "text-muted-foreground"
               )}
             >
               {link.label}
             </Link>
           ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-card text-ink transition-colors hover:bg-secondary-bg"
+            aria-label={
+              theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+            }
+          >
+            {theme === "dark" ? (
+              <Sun className="size-5" />
+            ) : (
+              <Moon className="size-5" />
+            )}
+          </button>
           <a
             href={`mailto:${site.email}`}
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
           >
             Contact
           </a>
         </div>
-
-        <button
-          className="md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
       </nav>
 
       <div
         className={cn(
           "overflow-hidden border-t transition-all md:hidden",
-          open ? "max-h-64" : "max-h-0 border-t-0"
+          open ? "max-h-72" : "max-h-0 border-t-0"
         )}
       >
         <div className="flex flex-col gap-1 px-4 py-3">
@@ -79,7 +101,7 @@ export function Navbar() {
               className={cn(
                 "rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-foreground",
                 isActive(pathname, link.href)
-                  ? "font-medium text-foreground"
+                  ? "font-semibold text-foreground"
                   : "text-muted-foreground"
               )}
             >

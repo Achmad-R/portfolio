@@ -122,15 +122,17 @@ export function ContactForm() {
           {state === "submitting" ? "Sending..." : "Send message"}
         </Button>
         {state === "success" && (
-          <p className="text-sm text-primary">Message sent — I&apos;ll get back to you soon.</p>
+          <span className="rounded-full bg-success-pale px-4 py-2 text-sm font-semibold text-success-deep">
+            Message sent — I&apos;ll get back to you soon.
+          </span>
         )}
         {state === "error" && (
           <div className="flex flex-col gap-1">
-            <p className="text-sm text-destructive">
+            <p className="text-sm font-semibold text-destructive">
               Something went wrong. Try again in a few minutes.
             </p>
             {lastError && (
-              <p className="font-mono text-xs text-muted-foreground">{lastError}</p>
+              <p className="text-xs text-muted-foreground">{lastError}</p>
             )}
           </div>
         )}

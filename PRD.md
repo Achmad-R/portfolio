@@ -126,11 +126,13 @@ model Message   { id, name, email, subject, message, isRead Boolean @default(fal
 
 ### 4.5 Desain UI
 
-- Tailwind v4 + shadcn/ui; **dark theme "Midnight Marigold"**: bg `#0B0E14` (midnight), surface `#12161F`, teks `#E6EAF2`, muted `#8A94A6`, aksen utama marigold `#E8A33D`, live `#86A873`, destructive `#D65A4A`, border `#1F2633`, radius 12px.
-- Tipografi: display **Bricolage Grotesque** (judul, track ketat), body **DM Sans**, mono **JetBrains Mono hanya untuk data kecil** (tanggal, tag, meta).
+- Tailwind v4 + shadcn/ui; sistem desain **"Pinterest"** (mengikuti `DESIGN-pinterest.md`): CTA merah `#E60023` (pressed `#CC001F`) sebagai satu-satunya aksen jenuh, chrome cream/light (`canvas #FFFFFF`, `surface-soft #FBFBF9`, `surface-card #F6F6F3`), teks `body #33332E`, radius **16px** (dominan) / **32px** (kartu besar, modal) / **pill**, tanpa shadow pada kartu, masonry pin grid 8px gutter.
+- **Mode light + dark via toggle** (persist localStorage + preferensi sistem; default light). Dark: adaptasi hangat token (bg `#1A1817`, card `#242120`, teks `#F5F5F3`), merah CTA tetap `#E60023`.
+- Tipografi: **Inter** (400/500/600/700) sebagai substitusi Pin Sans di semua peran teks; **tanpa serif & tanpa monospace** pada chrome (mono hanya dipertahankan untuk blok kode dalam konten markdown).
+- Fokus input: double-ring (border 2px ink + outline 4px `#435EE5`); feedback form: pill sukses `#C7F0DA`/`#103C25`, error `#9E0A0A` (inline, tanpa toast lib).
 - Konten publik **English**; UI admin **Bahasa Indonesia**.
 - Site identity terpusat di `src/lib/site.ts` (name: "Achmad Ridho", tagline: "Fullstack Developer", email: `achmad.ridho.st@gmail.com`).
-- Riwayat desain sebelumnya: lihat `firstDesign.md` (Terminal Alive / Steel & Tungsten, ditolak owner 8/2026).
+- Riwayat desain sebelumnya: lihat `firstDesign.md` (Terminal Alive / Steel & Tungsten) dan `secondDesign.md` (Midnight Marigold), keduanya ditolak owner 8/2026.
 
 ---
 

@@ -8,9 +8,7 @@ export const metadata: Metadata = {
 export default function NewProjectPage() {
   return (
     <div className="flex flex-col gap-6 p-6">
-      <h1 className="text-2xl font-bold tracking-tight">
-        <span className="text-primary">$</span> projects/new
-      </h1>
+      <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">Project baru</h1>
       <ProjectForm mode="create" />
     </div>
   );

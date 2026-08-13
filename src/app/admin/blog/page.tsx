@@ -26,12 +26,10 @@ export default async function AdminBlogPage() {
   return (
     <div className="flex flex-col gap-6 p-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight">
-          <span className="text-primary">$</span> blog
-        </h1>
+        <h1 className="text-3xl font-bold tracking-[-1.2px] text-ink">Blog</h1>
         <Link
           href="/admin/blog/new"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-[#cc001f]"
         >
           <Plus className="size-4" /> Post baru
         </Link>
@@ -40,7 +38,7 @@ export default async function AdminBlogPage() {
       {posts.length === 0 ? (
         <p className="text-sm text-muted-foreground">Belum ada post.</p>
       ) : (
-        <div className="rounded-lg border bg-card">
+        <div className="overflow-hidden rounded-md bg-surface-card">
           <Table>
             <TableHeader>
               <TableRow>
@@ -54,16 +52,16 @@ export default async function AdminBlogPage() {
               {posts.map((post) => (
                 <TableRow key={post.id}>
                   <TableCell className="font-medium">{post.title}</TableCell>
-                  <TableCell className="font-mono text-xs text-muted-foreground">
+                  <TableCell className="text-xs text-muted-foreground">
                     {post.tags.map((tag) => `#${tag}`).join(" ")}
                   </TableCell>
                   <TableCell>
                     {post.published ? (
-                      <Badge variant="outline" className="font-mono text-[10px] text-primary">
+                      <Badge variant="outline" className="text-[10px] text-primary">
                         published
                       </Badge>
                     ) : (
-                      <Badge variant="secondary" className="font-mono text-[10px]">
+                      <Badge variant="secondary" className="text-[10px]">
                         draft
                       </Badge>
                     )}
