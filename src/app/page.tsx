@@ -138,7 +138,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="flex flex-col gap-6 rounded-[24px] bg-block-lime p-12 text-ink">
+      <section className="flex flex-col gap-6 rounded-[24px] bg-block-lime p-12 text-block-fg">
         <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px]">
           Stack
         </h2>
@@ -146,7 +146,7 @@ export default async function HomePage() {
           {skills.map((skill) => (
             <span
               key={skill}
-              className="rounded-sm bg-background px-3 py-1.5 text-sm font-semibold"
+              className="rounded-sm bg-white/80 px-3 py-1.5 text-sm font-semibold"
             >
               {skill}
             </span>
@@ -181,7 +181,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="flex flex-col gap-8 rounded-[24px] bg-block-navy p-12 text-inverse-ink">
+      <section className="flex flex-col gap-8 rounded-[24px] bg-block-navy p-12 text-block-fg-inverse">
         <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px]">
           Timeline
         </h2>
@@ -203,7 +203,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-start justify-between gap-8 rounded-[24px] bg-block-coral p-12 text-ink sm:flex-row sm:items-center">
+      <section className="flex flex-col items-start justify-between gap-8 rounded-[24px] bg-block-coral p-12 text-block-fg sm:flex-row sm:items-center">
         <div className="flex flex-col gap-2">
           <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px]">
             Have a project in mind?
@@ -214,7 +214,7 @@ export default async function HomePage() {
         </div>
         <Link
           href="/contact"
-          className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-ink px-6 text-sm font-bold text-background transition-opacity hover:opacity-90"
+          className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-block-fg px-6 text-sm font-bold text-white transition-opacity hover:opacity-90"
         >
           Start a conversation <ArrowUpRight className="size-4" />
         </Link>
