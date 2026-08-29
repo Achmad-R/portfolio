@@ -89,7 +89,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-      {/* Honeypot field — must stay empty (hidden from humans) */}
+      {/* Honeypot field - must stay empty (hidden from humans) */}
       <input
         type="text"
         name="website"
@@ -123,7 +123,7 @@ export function ContactForm() {
         </Button>
         {state === "success" && (
           <span className="text-sm font-semibold text-success-deep">
-            Message sent — I&apos;ll get back to you soon.
+            Message sent. I&apos;ll get back to you soon.
           </span>
         )}
         {state === "error" && (

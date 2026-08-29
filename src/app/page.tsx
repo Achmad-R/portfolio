@@ -1,40 +1,48 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { site } from "@/lib/site";
-import { ProjectCard } from "@/components/project-card";
+import {
+  FeaturedProjectCard,
+  ProjectCard,
+} from "@/components/project-card";
 import { PostRow } from "@/components/post-row";
 
-const skills = [
-  "TypeScript",
-  "Next.js",
-  "React",
-  "Node.js",
-  "PostgreSQL",
-  "Supabase",
-  "Prisma",
-  "Tailwind CSS",
-  "Docker",
-  "Git",
-];
-
-const timeline = [
-  {
-    year: "2026",
-    title: "Portfolio with custom CMS",
-    text: "Built this site end-to-end: Next.js frontend, Supabase backend, custom admin panel for content.",
-  },
-  {
-    year: "2025",
-    title: "Realtime applications",
-    text: "Explored WebSockets and realtime architectures, shipping a chat application with presence.",
-  },
-  {
-    year: "2024",
-    title: "Started fullstack journey",
-    text: "Fell in love with the full stack — from REST APIs and databases to polished user interfaces.",
-  },
-];
+function EmptyFeaturedStage() {
+  return (
+    <div className="relative isolate overflow-hidden rounded-[24px] border border-block-fg/15 bg-block-lilac p-6 text-block-fg sm:p-8">
+      <div
+        className="absolute inset-y-0 left-1/3 w-px bg-block-fg/10"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-y-0 left-2/3 w-px bg-block-fg/10"
+        aria-hidden="true"
+      />
+      <div className="relative flex min-h-[22rem] flex-col justify-between gap-10">
+        <div className="flex items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.12em]">
+          <span>Case study slot</span>
+          <span>Open</span>
+        </div>
+        <div className="max-w-sm">
+          <h3 className="max-w-[16ch] text-3xl font-[540] leading-tight tracking-[-0.03em]">
+            A place for verified work.
+          </h3>
+          <p className="mt-4 max-w-[38ch] text-base leading-relaxed text-block-fg/75">
+            The first case study will live here when its story and evidence are
+            ready to share.
+          </p>
+        </div>
+        <div className="flex items-end justify-between gap-4">
+          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-block-fg/70">
+            Add through the CMS
+          </span>
+          <ArrowUpRight className="size-6" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default async function HomePage() {
   const [projects, posts] = await Promise.all([
@@ -50,127 +58,150 @@ export default async function HomePage() {
     }),
   ]);
 
+  const featuredProject = projects[0] ?? null;
+  const supportingProjects = projects.slice(1);
+
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-24 px-4 py-16 sm:py-24">
-      <section className="grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
-        <div className="flex flex-col gap-7 animate-in fade-in duration-500">
-          <p className="font-mono text-xs uppercase tracking-[0.54px] text-muted-foreground">
-            Fullstack developer · Jakarta, ID
-          </p>
-          <h1 className="text-6xl font-[340] leading-[1.05] tracking-[-1.72px] text-ink sm:text-7xl lg:text-[80px]">
-            {site.name}
-            <span className="text-ink">.</span>
+    <div className="mx-auto flex max-w-6xl flex-col gap-24 px-4 py-16 sm:py-20">
+      <section
+        aria-labelledby="intro-heading"
+        className="grid gap-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-end"
+      >
+        <div className="flex flex-col gap-8">
+          <h1
+            id="intro-heading"
+            className="max-w-[8ch] text-6xl font-[340] leading-[1.02] tracking-[-0.055em] text-ink sm:text-7xl lg:text-[80px]"
+          >
+            {site.name}.
           </h1>
-          <p className="max-w-xl text-lg font-[330] leading-[1.45] text-ink sm:text-xl">
-            I build fast, maintainable web applications — clean architecture,
-            sensible tooling, and interfaces that feel right.
-          </p>
+          <div className="flex flex-col gap-4">
+            <p className="max-w-xl text-xl font-[430] leading-[1.3] tracking-[-0.02em] text-ink sm:text-2xl">
+              End-to-end product builder for dependable web applications.
+            </p>
+            <p className="max-w-lg text-base leading-[1.55] text-muted-foreground sm:text-lg">
+              I work across interface, backend, data, and deployment to turn a
+              clear problem into a product people can use.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/projects"
-              className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+              href="#featured-work"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              View projects <ArrowRight className="size-4" />
+              See the work <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex h-10 items-center gap-2 rounded-full border border-input bg-background px-6 text-sm font-bold text-ink transition-colors hover:bg-muted"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-input bg-background px-6 text-sm font-bold text-ink transition-colors hover:bg-muted"
             >
-              Contact
+              Start a conversation
             </Link>
           </div>
-        </div>
-
-        <aside className="flex flex-col gap-6 rounded-[24px] border border-border bg-background p-8 animate-in fade-in slide-in-from-bottom-3 duration-500 delay-150">
-          <div className="flex items-center justify-between">
-            <span className="text-base font-bold text-ink">Now</span>
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-ink">
+            <span className="inline-flex items-center gap-2">
               <span className="size-2 rounded-full bg-live" aria-hidden="true" />
               Available
             </span>
+            <span aria-hidden="true" className="text-muted-foreground">
+              ·
+            </span>
+            <span>Jakarta, Indonesia</span>
+            <span aria-hidden="true" className="text-muted-foreground">
+              ·
+            </span>
+            <span>Full-time and freelance</span>
           </div>
-          <ul className="flex flex-col gap-4 text-base leading-[1.45] text-ink">
-            <li className="flex items-start gap-3">
-              <MapPin className="mt-1 size-4 shrink-0 text-ink" aria-hidden="true" />
-              Based in Jakarta — remote-friendly, open to full-time roles and
-              freelance projects.
-            </li>
-            <li className="flex items-start gap-3">
-              <Mail className="mt-1 size-4 shrink-0 text-ink" aria-hidden="true" />
-              <a href={`mailto:${site.email}`} className="text-ink hover:underline">
-                {site.email}
-              </a>
-            </li>
-          </ul>
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-1 text-base font-semibold text-ink hover:underline"
-          >
-            More about me <ArrowUpRight className="size-4" />
-          </Link>
-        </aside>
+        </div>
+
+        <div id="featured-work" className="flex min-w-0 flex-col gap-4">
+          <div className="flex items-end justify-between gap-6">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink">
+                Featured work
+              </h2>
+              <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
+                {featuredProject
+                  ? "One project, examined end to end."
+                  : "A place for the first verified case study."}
+              </p>
+            </div>
+            {featuredProject && (
+              <Link
+                href="/projects"
+                className="group inline-flex min-h-11 shrink-0 items-center gap-1 text-sm font-semibold text-ink hover:underline"
+              >
+                View all
+                <ArrowRight
+                  className="size-4 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+            )}
+          </div>
+          {featuredProject ? (
+            <FeaturedProjectCard project={featuredProject} />
+          ) : (
+            <EmptyFeaturedStage />
+          )}
+        </div>
       </section>
 
-      {projects.length > 0 && (
-        <section className="flex flex-col gap-8">
-          <div className="flex items-end justify-between">
+      {supportingProjects.length > 0 && (
+        <section aria-labelledby="more-work-heading" className="flex flex-col gap-8">
+          <div className="flex items-end justify-between gap-6">
             <div className="flex flex-col gap-2">
-              <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px] text-ink">
-                Featured projects
+              <h2
+                id="more-work-heading"
+                className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+              >
+                More work
               </h2>
-              <p className="text-base text-muted-foreground">
-                A selection of things I&apos;ve built recently.
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Other projects worth a closer look.
               </p>
             </div>
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-1 text-base font-semibold text-ink hover:underline"
+              className="group inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ink hover:underline"
             >
-              View all
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              Browse projects
+              <ArrowRight
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </Link>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+          <div className="grid gap-5 sm:grid-cols-2">
+            {supportingProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </section>
       )}
 
-      <section className="flex flex-col gap-6 rounded-[24px] bg-block-lime p-12 text-block-fg">
-        <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px]">
-          Stack
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <span
-              key={skill}
-              className="rounded-sm bg-white/80 px-3 py-1.5 text-sm font-semibold"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
-
       {posts.length > 0 && (
-        <section className="flex flex-col gap-8">
-          <div className="flex items-end justify-between">
+        <section aria-labelledby="latest-posts-heading" className="flex flex-col gap-8">
+          <div className="flex items-end justify-between gap-6">
             <div className="flex flex-col gap-2">
-              <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px] text-ink">
-                Latest posts
+              <h2
+                id="latest-posts-heading"
+                className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+              >
+                Latest writing
               </h2>
-              <p className="text-base text-muted-foreground">
-                Notes on web development and tools.
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Notes from the build process.
               </p>
             </div>
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-1 text-base font-semibold text-ink hover:underline"
+              className="group inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ink hover:underline"
             >
               Read all
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </Link>
           </div>
           <div className="flex flex-col divide-y divide-border overflow-hidden rounded-[24px] border border-border bg-background">
@@ -181,42 +212,26 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="flex flex-col gap-8 rounded-[24px] bg-block-navy p-12 text-block-fg-inverse">
-        <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px]">
-          Timeline
-        </h2>
-        <div className="flex flex-col gap-8">
-          {timeline.map((item) => (
-            <div
-              key={item.title}
-              className="grid gap-2 sm:grid-cols-[100px_1fr] sm:gap-6"
-            >
-              <div className="font-mono text-xs uppercase tracking-[0.54px] opacity-80">
-                {item.year}
-              </div>
-              <div className="flex flex-col gap-1">
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm leading-relaxed opacity-80">{item.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="flex flex-col items-start justify-between gap-8 rounded-[24px] bg-block-coral p-12 text-block-fg sm:flex-row sm:items-center">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-[26px] font-[540] leading-[1.35] tracking-[-0.26px]">
+      <section
+        aria-labelledby="contact-heading"
+        className="flex flex-col items-start justify-between gap-8 rounded-[24px] bg-block-coral p-8 text-block-fg sm:flex-row sm:items-center sm:p-12"
+      >
+        <div className="flex flex-col gap-3">
+          <h2
+            id="contact-heading"
+            className="max-w-[18ch] text-[26px] font-[540] leading-[1.2] tracking-[-0.02em]"
+          >
             Have a project in mind?
           </h2>
-          <p className="text-base leading-[1.45]">
+          <p className="max-w-xl text-base leading-[1.5]">
             I&apos;m currently available for freelance and full-time opportunities.
           </p>
         </div>
         <Link
           href="/contact"
-          className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-block-fg px-6 text-sm font-bold text-white transition-opacity hover:opacity-90"
+          className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-block-fg px-6 text-sm font-bold text-white transition-opacity hover:opacity-90"
         >
-          Start a conversation <ArrowUpRight className="size-4" />
+          Start a conversation <ArrowUpRight className="size-4" aria-hidden="true" />
         </Link>
       </section>
     </div>

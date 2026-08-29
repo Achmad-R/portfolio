@@ -25,7 +25,7 @@ export function MarkdownEditor({ value, onChange, label = "Konten (markdown)" }:
           {value ? (
             <Markdown content={value} />
           ) : (
-            <p className="text-sm text-muted-foreground">Kosong — belum ada konten.</p>
+            <p className="text-sm text-muted-foreground">Kosong, belum ada konten.</p>
           )}
         </div>
       </div>

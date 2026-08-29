@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Moon, Sun, X } from "lucide-react";
@@ -25,48 +25,75 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
+  const menuId = "mobile-navigation";
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    firstMenuLinkRef.current?.focus();
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background">
-      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
-        <div className="flex items-center gap-4">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4">
+        <div className="flex min-w-0 items-center gap-2">
           <button
-            className="md:hidden"
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
+            ref={menuButtonRef}
+            type="button"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full text-ink transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring min-[960px]:hidden"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls={menuId}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
           <Link
             href="/"
-            className="text-base font-semibold tracking-tight text-ink"
+            className="inline-flex min-h-11 items-center text-base font-semibold tracking-tight text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {site.name}
           </Link>
         </div>
 
-        <div className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "relative text-sm transition-colors hover:text-ink",
-                isActive(pathname, link.href)
-                  ? "font-semibold text-ink after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-ink"
-                  : "text-muted-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-2 min-[960px]:flex">
+          {links.map((link) => {
+            const active = isActive(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative inline-flex min-h-11 items-center px-3 text-sm transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                  active
+                    ? "font-semibold text-ink after:absolute after:inset-x-3 after:bottom-1 after:h-px after:bg-ink"
+                    : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={toggleTheme}
-            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-accent"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-surface-soft text-ink transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-label={
               theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
             }
@@ -79,35 +106,51 @@ export function Navbar() {
           </button>
           <a
             href={`mailto:${site.email}`}
-            className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+            className="hidden min-h-11 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring min-[960px]:inline-flex"
           >
-            Contact
+            Email me
           </a>
         </div>
       </nav>
 
       <div
+        id={menuId}
+        role="region"
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
         className={cn(
-          "overflow-hidden border-t transition-all md:hidden",
-          open ? "max-h-72" : "max-h-0 border-t-0"
+          "border-t min-[960px]:hidden",
+          open ? "block" : "hidden"
         )}
       >
         <div className="flex flex-col gap-1 px-4 py-3">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className={cn(
-                "rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-foreground",
-                isActive(pathname, link.href)
-                  ? "font-semibold text-foreground"
-                  : "text-muted-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link, index) => {
+            const active = isActive(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                ref={index === 0 ? firstMenuLinkRef : undefined}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "inline-flex min-h-11 items-center rounded-md px-3 text-sm transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                  active
+                    ? "font-semibold text-foreground"
+                    : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <a
+            href={`mailto:${site.email}`}
+            onClick={() => setOpen(false)}
+            className="inline-flex min-h-11 items-center rounded-md px-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Email me
+          </a>
         </div>
       </div>
     </header>

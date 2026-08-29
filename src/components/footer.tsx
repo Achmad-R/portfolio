@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Rss, Mail } from "lucide-react";
+import { Mail, Rss } from "lucide-react";
 import { GithubIcon } from "@/components/github-icon";
 import { site } from "@/lib/site";
 
@@ -27,7 +27,7 @@ function FooterColumn({
   return (
     <div className="flex flex-col gap-3">
       <h3 className="text-sm font-semibold text-ink">{title}</h3>
-      <div className="flex flex-col gap-2">{children}</div>
+      <div className="flex flex-col gap-1">{children}</div>
     </div>
   );
 }
@@ -41,7 +41,8 @@ function FooterLink({
   label: string;
   external: boolean;
 }) {
-  const cls = "text-sm text-muted-foreground transition-colors hover:text-ink";
+  const cls =
+    "inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
   if (external) {
     return (
       <a
@@ -63,33 +64,37 @@ function FooterLink({
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background px-8 py-16">
-      <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t bg-background px-4 py-14 sm:px-8 sm:py-16">
+      <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-[0.75fr_0.75fr_1.5fr]">
         <FooterColumn title="Explore">
-          {exploreLinks.map((l) => (
-            <FooterLink key={l.href} href={l.href} label={l.label} external={false} />
+          {exploreLinks.map((link) => (
+            <FooterLink
+              key={link.href}
+              href={link.href}
+              label={link.label}
+              external={false}
+            />
           ))}
         </FooterColumn>
         <FooterColumn title="Connect">
-          {connectLinks.map((l) => (
-            <FooterLink key={l.label} href={l.href} label={l.label} external={l.external} />
+          {connectLinks.map((link) => (
+            <FooterLink
+              key={link.label}
+              href={link.href}
+              label={link.label}
+              external={link.external}
+            />
           ))}
-        </FooterColumn>
-        <FooterColumn title="Stack">
-          <p className="text-sm text-muted-foreground">Next.js 16</p>
-          <p className="text-sm text-muted-foreground">Prisma + Supabase</p>
-          <p className="text-sm text-muted-foreground">Tailwind + shadcn/ui</p>
-          <p className="text-sm text-muted-foreground">Deployed on Vercel</p>
         </FooterColumn>
         <div className="flex flex-col gap-3">
           <h3 className="text-sm font-semibold text-ink">{site.name}</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
             {site.tagline} building practical, end-to-end software.
           </p>
-          <div className="mt-1 flex items-center gap-3">
+          <div className="mt-1 flex items-center gap-1">
             <Link
               href="/feed.xml"
-              className="text-muted-foreground transition-colors hover:text-ink"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="RSS feed"
             >
               <Rss className="size-4" />
@@ -98,14 +103,14 @@ export function Footer() {
               href="https://github.com/Achmad-R"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-ink"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="GitHub"
             >
               <GithubIcon className="size-4" />
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="text-muted-foreground transition-colors hover:text-ink"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Email"
             >
               <Mail className="size-4" />
@@ -113,7 +118,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-8 flex max-w-6xl items-center justify-between border-t pt-4 text-xs text-muted-foreground">
+      <div className="mx-auto mt-10 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t pt-4 text-xs text-muted-foreground">
         <p>
           © {new Date().getFullYear()} {site.name}
         </p>

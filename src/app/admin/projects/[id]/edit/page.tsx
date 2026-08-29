@@ -8,7 +8,7 @@ interface PageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Edit Project — Admin",
+  title: "Edit Project - Admin",
 };
 
 export default async function EditProjectPage({ params }: PageProps) {

@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  // Kirim email setelah response terkirim — tidak pernah memblokir client.
+  // Kirim email setelah response terkirim - tidak pernah memblokir client.
   if (process.env.RESEND_API_KEY) {
     const { name, email, subject, message } = parsed.data;
     after(async () => {
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
           text: `New contact message from ${name} <${email}>\n\nSubject: ${subject}\n\n${message}`,
         });
       } catch (err) {
-        // Pesan tetap tersimpan di DB walau email gagal — jangan bocorkan detail ke client.
+        // Pesan tetap tersimpan di DB walau email gagal - jangan bocorkan detail ke client.
         console.error("contact email send failed:", err);
       }
     });

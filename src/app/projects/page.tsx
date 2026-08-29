@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
           Projects
         </h1>
         <p className="text-lg text-muted-foreground">
-          A selection of things I&apos;ve built — from fullstack applications to APIs and
+          A selection of things I&apos;ve built, from fullstack applications to APIs and
           tooling.
         </p>
       </div>

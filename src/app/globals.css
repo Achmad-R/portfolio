@@ -191,9 +191,14 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--focus-outer);
+    outline-offset: 3px;
   }
   ::selection {
     background-color: #000000;
@@ -212,5 +217,8 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }

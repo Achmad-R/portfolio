@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatDateTime } from "@/lib/date";
 
 export const metadata: Metadata = {
-  title: "Messages — Admin",
+  title: "Messages - Admin",
 };
 
 export default async function AdminMessagesPage() {

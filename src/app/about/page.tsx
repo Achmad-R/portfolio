@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${site.name} — ${site.tagline}.`,
+  description: `About ${site.name} - ${site.tagline}.`,
 };
 
 const skills = [
@@ -34,7 +34,7 @@ const history = [
   {
     year: "2024",
     title: "Started fullstack journey",
-    text: "Fell in love with the full stack — from REST APIs and databases to polished user interfaces.",
+    text: "Fell in love with the full stack: from REST APIs and databases to polished user interfaces.",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function AboutPage() {
           About
         </h1>
         <p className="text-lg leading-relaxed text-muted-foreground">
-          Hi, I&apos;m {site.name} — {site.tagline}. I build fast, maintainable web
+          Hi, I&apos;m {site.name}, a {site.tagline}. I build fast, maintainable web
           applications, and I care about the details: clean architecture, sensible
           tooling, and interfaces that feel right.
         </p>

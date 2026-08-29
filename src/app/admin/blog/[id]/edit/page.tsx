@@ -8,7 +8,7 @@ interface PageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Edit Post — Admin",
+  title: "Edit Post - Admin",
 };
 
 export default async function EditPostPage({ params }: PageProps) {

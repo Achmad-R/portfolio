@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PostForm } from "@/components/admin/post-form";
 
 export const metadata: Metadata = {
-  title: "Post Baru — Admin",
+  title: "Post Baru - Admin",
 };
 
 export default function NewPostPage() {

@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/table";
 
 export const metadata: Metadata = {
-  title: "Blog — Admin",
+  title: "Blog - Admin",
 };
 
 export default async function AdminBlogPage() {

@@ -1,0 +1,175 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Achmad Ridho" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Projects" [ref=e9] [cursor=pointer]:
+          - /url: /projects
+        - link "Blog" [ref=e10] [cursor=pointer]:
+          - /url: /blog
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e12]:
+        - button "Switch to dark theme" [ref=e13]
+        - link "Contact" [ref=e16] [cursor=pointer]:
+          - /url: mailto:achmad.ridho.st@gmail.com
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - paragraph [ref=e21]: Fullstack developer · Jakarta, ID
+          - heading "Achmad Ridho." [level=1] [ref=e22]
+          - paragraph [ref=e23]: I build fast, maintainable web applications — clean architecture, sensible tooling, and interfaces that feel right.
+          - generic [ref=e24]:
+            - link "View projects" [ref=e25] [cursor=pointer]:
+              - /url: /projects
+            - link "Contact" [ref=e28] [cursor=pointer]:
+              - /url: /contact
+        - complementary [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: Now
+            - generic [ref=e32]: Available
+          - list [ref=e34]:
+            - listitem [ref=e35]: Based in Jakarta — remote-friendly, open to full-time roles and freelance projects.
+            - listitem [ref=e39]:
+              - link "achmad.ridho.st@gmail.com" [ref=e43] [cursor=pointer]:
+                - /url: mailto:achmad.ridho.st@gmail.com
+          - link "More about me" [ref=e44] [cursor=pointer]:
+            - /url: /about
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - heading "Featured projects" [level=2] [ref=e51]
+            - paragraph [ref=e52]: A selection of things I've built recently.
+          - link "View all" [ref=e53] [cursor=pointer]:
+            - /url: /projects
+        - generic [ref=e56]:
+          - link "Terminal Portfolio CMS Aug 12, 2026 Terminal Portfolio CMS A self-hosted portfolio with a built-in CMS. This very site — markdown blogging, project showcase, and a custom admin panel. Next.js TypeScript Supabase Prisma" [ref=e57] [cursor=pointer]:
+            - /url: /projects/terminal-portfolio-cms
+            - generic [ref=e58]: Terminal Portfolio CMS
+            - generic [ref=e60]:
+              - generic [ref=e61]: Aug 12, 2026
+              - heading "Terminal Portfolio CMS" [level=3] [ref=e62]
+              - paragraph [ref=e63]: A self-hosted portfolio with a built-in CMS. This very site — markdown blogging, project showcase, and a custom admin panel.
+              - generic [ref=e64]:
+                - generic [ref=e65]: Next.js
+                - generic [ref=e66]: TypeScript
+                - generic [ref=e67]: Supabase
+                - generic [ref=e68]: Prisma
+          - link "Realtime Chat App Aug 12, 2026 Realtime Chat App A realtime messaging application with rooms, presence indicators, and message history, built on a WebSocket backend. React Node.js WebSocket PostgreSQL" [ref=e69] [cursor=pointer]:
+            - /url: /projects/realtime-chat-app
+            - generic [ref=e70]: Realtime Chat App
+            - generic [ref=e72]:
+              - generic [ref=e73]: Aug 12, 2026
+              - heading "Realtime Chat App" [level=3] [ref=e74]
+              - paragraph [ref=e75]: A realtime messaging application with rooms, presence indicators, and message history, built on a WebSocket backend.
+              - generic [ref=e76]:
+                - generic [ref=e77]: React
+                - generic [ref=e78]: Node.js
+                - generic [ref=e79]: WebSocket
+                - generic [ref=e80]: PostgreSQL
+      - generic [ref=e81]:
+        - heading "Stack" [level=2] [ref=e82]
+        - generic [ref=e83]:
+          - generic [ref=e84]: TypeScript
+          - generic [ref=e85]: Next.js
+          - generic [ref=e86]: React
+          - generic [ref=e87]: Node.js
+          - generic [ref=e88]: PostgreSQL
+          - generic [ref=e89]: Supabase
+          - generic [ref=e90]: Prisma
+          - generic [ref=e91]: Tailwind CSS
+          - generic [ref=e92]: Docker
+          - generic [ref=e93]: Git
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - heading "Latest posts" [level=2] [ref=e97]
+            - paragraph [ref=e98]: Notes on web development and tools.
+          - link "Read all" [ref=e99] [cursor=pointer]:
+            - /url: /blog
+        - generic [ref=e102]:
+          - 'link "Aug 12, 2026 Why I Moved My Portfolio to a Custom CMS #Next.js #Architecture" [ref=e103] [cursor=pointer]':
+            - /url: /blog/why-i-moved-to-a-custom-cms
+            - generic [ref=e104]: Aug 12, 2026
+            - generic [ref=e105]: Why I Moved My Portfolio to a Custom CMS
+            - generic [ref=e106]: "#Next.js #Architecture"
+          - 'link "Aug 12, 2026 Getting Started with Supabase Storage in Next.js #Supabase #Next.js" [ref=e107] [cursor=pointer]':
+            - /url: /blog/supabase-storage-nextjs
+            - generic [ref=e108]: Aug 12, 2026
+            - generic [ref=e109]: Getting Started with Supabase Storage in Next.js
+            - generic [ref=e110]: "#Supabase #Next.js"
+      - generic [ref=e111]:
+        - heading "Timeline" [level=2] [ref=e112]
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - generic [ref=e115]: "2026"
+            - generic [ref=e116]:
+              - heading "Portfolio with custom CMS" [level=3] [ref=e117]
+              - paragraph [ref=e118]: "Built this site end-to-end: Next.js frontend, Supabase backend, custom admin panel for content."
+          - generic [ref=e119]:
+            - generic [ref=e120]: "2025"
+            - generic [ref=e121]:
+              - heading "Realtime applications" [level=3] [ref=e122]
+              - paragraph [ref=e123]: Explored WebSockets and realtime architectures, shipping a chat application with presence.
+          - generic [ref=e124]:
+            - generic [ref=e125]: "2024"
+            - generic [ref=e126]:
+              - heading "Started fullstack journey" [level=3] [ref=e127]
+              - paragraph [ref=e128]: Fell in love with the full stack — from REST APIs and databases to polished user interfaces.
+      - generic [ref=e129]:
+        - generic [ref=e130]:
+          - heading "Have a project in mind?" [level=2] [ref=e131]
+          - paragraph [ref=e132]: I'm currently available for freelance and full-time opportunities.
+        - link "Start a conversation" [ref=e133] [cursor=pointer]:
+          - /url: /contact
+  - contentinfo [ref=e137]:
+    - generic [ref=e138]:
+      - generic [ref=e139]:
+        - heading "Explore" [level=3] [ref=e140]
+        - generic [ref=e141]:
+          - link "Home" [ref=e142] [cursor=pointer]:
+            - /url: /
+          - link "About" [ref=e143] [cursor=pointer]:
+            - /url: /about
+          - link "Projects" [ref=e144] [cursor=pointer]:
+            - /url: /projects
+          - link "Blog" [ref=e145] [cursor=pointer]:
+            - /url: /blog
+          - link "Contact" [ref=e146] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e147]:
+        - heading "Connect" [level=3] [ref=e148]
+        - generic [ref=e149]:
+          - link "Email" [ref=e150] [cursor=pointer]:
+            - /url: mailto:achmad.ridho.st@gmail.com
+          - link "GitHub" [ref=e151] [cursor=pointer]:
+            - /url: https://github.com/Achmad-R
+          - link "RSS Feed" [ref=e152] [cursor=pointer]:
+            - /url: /feed.xml
+      - generic [ref=e153]:
+        - heading "Stack" [level=3] [ref=e154]
+        - generic [ref=e155]:
+          - paragraph [ref=e156]: Next.js 16
+          - paragraph [ref=e157]: Prisma + Supabase
+          - paragraph [ref=e158]: Tailwind + shadcn/ui
+          - paragraph [ref=e159]: Deployed on Vercel
+      - generic [ref=e160]:
+        - heading "Achmad Ridho" [level=3] [ref=e161]
+        - paragraph [ref=e162]: Fullstack Developer building practical, end-to-end software.
+        - generic [ref=e163]:
+          - link "RSS feed" [ref=e164] [cursor=pointer]:
+            - /url: /feed.xml
+          - link "GitHub" [ref=e169] [cursor=pointer]:
+            - /url: https://github.com/Achmad-R
+          - link "Email" [ref=e172] [cursor=pointer]:
+            - /url: mailto:achmad.ridho.st@gmail.com
+    - generic [ref=e176]:
+      - paragraph [ref=e177]: © 2026 Achmad Ridho
+      - paragraph [ref=e178]: Fullstack Developer
+  - alert [ref=e179]
