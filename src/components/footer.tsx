@@ -83,7 +83,7 @@ function FooterLink({
 export function Footer() {
   return (
     <footer className="border-t border-block-fg-inverse/15 bg-block-navy text-block-fg-inverse">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-12 lg:py-14">
         <h2 className="sr-only">Site footer</h2>
 
         <nav aria-label="Footer quick links" className="flex flex-wrap gap-2">
@@ -99,7 +99,7 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-24 lg:grid-cols-[1.4fr_repeat(3,minmax(0,1fr))]">
+        <div className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:mt-16 lg:grid-cols-[1.4fr_repeat(3,minmax(0,1fr))]">
           <div className="max-w-sm">
             <p className="text-4xl font-[340] leading-[0.95] tracking-[-0.04em] sm:text-5xl">
               {site.name}
@@ -136,7 +136,7 @@ export function Footer() {
             <h3 className="font-mono text-[11px] uppercase tracking-[0.16em]">
               Important links
             </h3>
-            <ul className="mt-3 flex flex-col gap-1">
+            <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1">
               {exploreLinks.map((link) => (
                 <li key={link.href}>
                   <FooterLink href={link.href} label={link.label} external={false} />
@@ -155,7 +155,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-block-fg-inverse/15 pt-5 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-block-fg-inverse/15 pt-5 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.name}
           </p>
