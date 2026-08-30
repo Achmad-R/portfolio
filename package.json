@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:setup": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts && tsx scripts/setup-storage.ts",
-    "prebuild": "npm run db:setup"
+    "postinstall": "prisma generate",
+    "db:setup": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts && tsx scripts/setup-storage.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.1",

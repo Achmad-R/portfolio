@@ -25,3 +25,11 @@ Di jaringan yang memblokir port Postgres, gunakan workflow GitHub Actions
 `.github/workflows/database-setup.yml` (manual trigger) dengan secrets:
 `DATABASE_URL`, `DIRECT_URL`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`,
 `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
+
+`npm run build` hanya membangun aplikasi dan tidak menjalankan migrasi, seed,
+atau setup Storage. Ini mencegah build Vercel bergantung pada koneksi database
+langsung. Prisma Client dibuat otomatis melalui `postinstall`.
+
+Jalankan `npm run db:setup` secara terpisah saat database perlu disiapkan.
+Untuk migrasi, `DIRECT_URL` wajib memakai koneksi direct Supabase; `DATABASE_URL`
+dipakai aplikasi saat runtime.

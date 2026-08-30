@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { POSTS_PER_PAGE } from "@/lib/site";
 import { Pagination } from "@/components/pagination";
-import { PostRow } from "@/components/post-row";
+import { PostCard } from "@/components/post-card";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -30,7 +30,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
   const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
 
   return (
-    <div className="mx-auto flex max-w-4xl flex-col gap-10 px-4 py-16 sm:py-24">
+    <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:py-24">
       <div className="flex max-w-2xl flex-col gap-3">
         <h1 className="text-5xl font-[340] leading-[1.1] tracking-[-0.96px] text-ink sm:text-6xl">
           Blog
@@ -44,9 +44,9 @@ export default async function BlogPage({ searchParams }: PageProps) {
         <p className="text-muted-foreground">No posts published yet.</p>
       ) : (
         <>
-          <div className="flex flex-col divide-y divide-border overflow-hidden rounded-[24px] border border-border bg-background">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
-              <PostRow key={post.id} post={post} />
+              <PostCard key={post.id} post={post} />
             ))}
           </div>
           <Pagination basePath="/blog" currentPage={currentPage} totalPages={totalPages} />

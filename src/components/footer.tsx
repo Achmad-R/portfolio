@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Mail, Rss } from "lucide-react";
-import { GithubIcon } from "@/components/github-icon";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site";
 
 const exploreLinks = [
@@ -12,25 +11,9 @@ const exploreLinks = [
 ];
 
 const connectLinks = [
-  { href: `mailto:${site.email}`, label: "Email", external: true },
   { href: "https://github.com/Achmad-R", label: "GitHub", external: true },
   { href: "/feed.xml", label: "RSS Feed", external: false },
 ];
-
-function FooterColumn({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-sm font-semibold text-ink">{title}</h3>
-      <div className="flex flex-col gap-1">{children}</div>
-    </div>
-  );
-}
 
 function FooterLink({
   href,
@@ -42,16 +25,23 @@ function FooterLink({
   external: boolean;
 }) {
   const cls =
-    "inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+    "group inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm text-inverse-ink transition-colors hover:bg-inverse-ink/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inverse-ink";
   if (external) {
     return (
       <a
         href={href}
         target={href.startsWith("mailto") ? undefined : "_blank"}
         rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+        aria-label={
+          href.startsWith("mailto") ? undefined : `${label} (opens in a new tab)`
+        }
         className={cls}
       >
         {label}
+        <ArrowUpRight
+          className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          aria-hidden="true"
+        />
       </a>
     );
   }
@@ -64,65 +54,84 @@ function FooterLink({
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background px-4 py-14 sm:px-8 sm:py-16">
-      <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-[0.75fr_0.75fr_1.5fr]">
-        <FooterColumn title="Explore">
-          {exploreLinks.map((link) => (
-            <FooterLink
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              external={false}
-            />
-          ))}
-        </FooterColumn>
-        <FooterColumn title="Connect">
-          {connectLinks.map((link) => (
-            <FooterLink
-              key={link.label}
-              href={link.href}
-              label={link.label}
-              external={link.external}
-            />
-          ))}
-        </FooterColumn>
-        <div className="flex flex-col gap-3">
-          <h3 className="text-sm font-semibold text-ink">{site.name}</h3>
-          <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
-            {site.tagline} building practical, end-to-end software.
-          </p>
-          <div className="mt-1 flex items-center gap-1">
-            <Link
-              href="/feed.xml"
-              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label="RSS feed"
-            >
-              <Rss className="size-4" />
-            </Link>
-            <a
-              href="https://github.com/Achmad-R"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label="GitHub"
-            >
-              <GithubIcon className="size-4" />
-            </a>
+    <footer className="border-t border-inverse-ink/15 bg-inverse-canvas text-inverse-ink">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-8 sm:py-20">
+        <h2 className="sr-only">Site footer</h2>
+
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:gap-16">
+          <div className="flex flex-col justify-between gap-10">
+            <div>
+              <p className="text-5xl font-[340] leading-[0.95] tracking-[-0.04em] sm:text-6xl">
+                {site.name}
+              </p>
+              <p className="mt-4 text-base sm:text-lg">
+                {site.tagline}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 text-sm font-semibold">
+              <span className="size-2 rounded-full bg-live" aria-hidden="true" />
+              <span>Available for full-time and freelance work</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-start gap-6 lg:items-end">
+            <p className="max-w-sm text-2xl font-[540] leading-tight tracking-[-0.025em] lg:text-right">
+              For projects, roles, and technical conversations.
+            </p>
             <a
               href={`mailto:${site.email}`}
-              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label="Email"
+              className="group inline-flex min-h-11 items-center gap-2 text-base font-semibold text-inverse-ink underline decoration-inverse-ink underline-offset-4 transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inverse-ink focus-visible:ring-offset-4 focus-visible:ring-offset-inverse-canvas"
             >
-              <Mail className="size-4" />
+              {site.email}
+              <ArrowRight
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </a>
           </div>
         </div>
-      </div>
-      <div className="mx-auto mt-10 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t pt-4 text-xs text-muted-foreground">
-        <p>
-          © {new Date().getFullYear()} {site.name}
-        </p>
-        <p>{site.tagline}</p>
+
+        <div className="mt-16 grid gap-8 border-t border-inverse-ink/15 pt-8 sm:grid-cols-2">
+          <nav aria-label="Footer navigation" className="flex flex-col gap-3">
+            <h3 className="font-mono text-[11px] uppercase tracking-[0.12em] text-inverse-ink">
+              Navigate
+            </h3>
+            <div className="flex flex-wrap gap-1">
+              {exploreLinks.map((link) => (
+                <FooterLink
+                  key={link.href}
+                  href={link.href}
+                  label={link.label}
+                  external={false}
+                />
+              ))}
+            </div>
+          </nav>
+
+          <nav aria-label="Elsewhere links" className="flex flex-col gap-3 sm:items-end">
+            <h3 className="font-mono text-[11px] uppercase tracking-[0.12em] text-inverse-ink">
+              Elsewhere
+            </h3>
+            <div className="flex flex-wrap gap-1 sm:justify-end">
+              {connectLinks.map((link) => (
+                <FooterLink
+                  key={link.label}
+                  href={link.href}
+                  label={link.label}
+                  external={link.external}
+                />
+              ))}
+            </div>
+          </nav>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-3 border-t border-inverse-ink/15 pt-5 text-xs text-inverse-ink sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} {site.name}
+          </p>
+          <p>Jakarta, Indonesia</p>
+        </div>
       </div>
     </footer>
   );
