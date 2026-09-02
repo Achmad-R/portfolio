@@ -62,159 +62,205 @@ export default async function HomePage() {
   const supportingProjects = projects.slice(1);
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-24 px-4 py-16 sm:py-20">
-      <section
-        aria-labelledby="intro-heading"
-        className="grid gap-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-end"
-      >
-        <div className="flex flex-col gap-8">
-          <h1
-            id="intro-heading"
-            className="max-w-[8ch] text-6xl font-[340] leading-[1.02] tracking-[-0.055em] text-ink sm:text-7xl lg:text-[80px]"
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+      <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]">
+        <div className="lg:sticky lg:top-20 lg:self-start">
+          <section aria-labelledby="intro-heading" className="flex flex-col gap-8">
+            <h1
+              id="intro-heading"
+              className="max-w-[8ch] text-6xl font-[340] leading-[1.02] tracking-[-0.055em] text-ink sm:text-7xl lg:text-[80px]"
+            >
+              {site.name}.
+            </h1>
+            <div className="flex flex-col gap-4">
+              <p className="max-w-xl text-xl font-[430] leading-[1.3] tracking-[-0.02em] text-ink sm:text-2xl">
+                End-to-end product builder for dependable web applications.
+              </p>
+              <p className="max-w-lg text-base leading-[1.55] text-muted-foreground sm:text-lg">
+                I work across interface, backend, data, and deployment to turn a
+                clear problem into a product people can use.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="#featured-work"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                See the work <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-input bg-background px-6 text-sm font-bold text-ink transition-colors hover:bg-muted"
+              >
+                Start a conversation
+              </Link>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-ink">
+              <span className="inline-flex items-center gap-2">
+                <span className="size-2 rounded-full bg-live" aria-hidden="true" />
+                Available
+              </span>
+              <span aria-hidden="true" className="text-muted-foreground">
+                ·
+              </span>
+              <span>Jakarta, Indonesia</span>
+              <span aria-hidden="true" className="text-muted-foreground">
+                ·
+              </span>
+              <span>Full-time and freelance</span>
+            </div>
+          </section>
+
+          <nav
+            aria-label="Homepage sections"
+            className="mt-8 hidden flex-col gap-1 border-t border-border pt-5 lg:flex"
           >
-            {site.name}.
-          </h1>
-          <div className="flex flex-col gap-4">
-            <p className="max-w-xl text-xl font-[430] leading-[1.3] tracking-[-0.02em] text-ink sm:text-2xl">
-              End-to-end product builder for dependable web applications.
-            </p>
-            <p className="max-w-lg text-base leading-[1.55] text-muted-foreground sm:text-lg">
-              I work across interface, backend, data, and deployment to turn a
-              clear problem into a product people can use.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
             <Link
               href="#featured-work"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex min-h-11 min-w-11 items-center text-sm text-muted-foreground transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              See the work <ArrowRight className="size-4" aria-hidden="true" />
+              Featured work
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-input bg-background px-6 text-sm font-bold text-ink transition-colors hover:bg-muted"
-            >
-              Start a conversation
-            </Link>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-ink">
-            <span className="inline-flex items-center gap-2">
-              <span className="size-2 rounded-full bg-live" aria-hidden="true" />
-              Available
-            </span>
-            <span aria-hidden="true" className="text-muted-foreground">
-              ·
-            </span>
-            <span>Jakarta, Indonesia</span>
-            <span aria-hidden="true" className="text-muted-foreground">
-              ·
-            </span>
-            <span>Full-time and freelance</span>
-          </div>
-        </div>
-
-        <div id="featured-work" className="flex min-w-0 flex-col gap-4">
-          <div className="flex items-end justify-between gap-6">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink">
-                Featured work
-              </h2>
-              <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
-                {featuredProject
-                  ? "One project, examined end to end."
-                  : "A place for the first verified case study."}
-              </p>
-            </div>
-            {featuredProject && (
+            {supportingProjects.length > 0 && (
               <Link
-                href="/projects"
-                className="group inline-flex min-h-11 shrink-0 items-center gap-1 text-sm font-semibold text-ink hover:underline"
-              >
-                View all
-                <ArrowRight
-                  className="size-4 transition-transform group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
-            )}
-          </div>
-          {featuredProject ? (
-            <FeaturedProjectCard project={featuredProject} />
-          ) : (
-            <EmptyFeaturedStage />
-          )}
-        </div>
-      </section>
-
-      {supportingProjects.length > 0 && (
-        <section aria-labelledby="more-work-heading" className="flex flex-col gap-8">
-          <div className="flex items-end justify-between gap-6">
-            <div className="flex flex-col gap-2">
-              <h2
-                id="more-work-heading"
-                className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+                href="#more-work"
+                className="inline-flex min-h-11 min-w-11 items-center text-sm text-muted-foreground transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 More work
-              </h2>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                Other projects worth a closer look.
-              </p>
-            </div>
-            <Link
-              href="/projects"
-              className="group inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ink hover:underline"
-            >
-              Browse projects
-              <ArrowRight
-                className="size-4 transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </Link>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {supportingProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {posts.length > 0 && (
-        <section aria-labelledby="latest-posts-heading" className="flex flex-col gap-8">
-          <div className="flex items-end justify-between gap-6">
-            <div className="flex flex-col gap-2">
-              <h2
-                id="latest-posts-heading"
-                className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+              </Link>
+            )}
+            {posts.length > 0 && (
+              <Link
+                href="#latest-writing"
+                className="inline-flex min-h-11 min-w-11 items-center text-sm text-muted-foreground transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Latest writing
-              </h2>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                Notes from the build process.
-              </p>
-            </div>
-            <Link
-              href="/blog"
-              className="group inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ink hover:underline"
+              </Link>
+            )}
+          </nav>
+        </div>
+
+        <div className="min-w-0 lg:border-l lg:border-border lg:pl-12">
+          <div className="flex flex-col gap-12 lg:gap-16">
+            <section
+              id="featured-work"
+              aria-labelledby="featured-work-heading"
+              className="flex min-w-0 scroll-mt-20 flex-col gap-4"
             >
-              Read all
-              <ArrowRight
-                className="size-4 transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </Link>
+              <div className="flex items-end justify-between gap-6">
+                <div className="flex flex-col gap-2">
+                  <h2
+                    id="featured-work-heading"
+                    className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+                  >
+                    Featured work
+                  </h2>
+                  <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
+                    {featuredProject
+                      ? "One project, examined end to end."
+                      : "A place for the first verified case study."}
+                  </p>
+                </div>
+                {featuredProject && (
+                  <Link
+                    href="/projects"
+                    className="group inline-flex min-h-11 shrink-0 items-center gap-1 text-sm font-semibold text-ink hover:underline"
+                  >
+                    View all
+                    <ArrowRight
+                      className="size-4 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                )}
+              </div>
+              {featuredProject ? (
+                <FeaturedProjectCard project={featuredProject} />
+              ) : (
+                <EmptyFeaturedStage />
+              )}
+            </section>
+
+            {supportingProjects.length > 0 && (
+              <section
+                id="more-work"
+                aria-labelledby="more-work-heading"
+                className="flex scroll-mt-20 flex-col gap-8"
+              >
+                <div className="flex items-end justify-between gap-6">
+                  <div className="flex flex-col gap-2">
+                    <h2
+                      id="more-work-heading"
+                      className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+                    >
+                      More work
+                    </h2>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      Other projects worth a closer look.
+                    </p>
+                  </div>
+                  <Link
+                    href="/projects"
+                    className="group inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ink hover:underline"
+                  >
+                    Browse projects
+                    <ArrowRight
+                      className="size-4 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </div>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  {supportingProjects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {posts.length > 0 && (
+              <section
+                id="latest-writing"
+                aria-labelledby="latest-posts-heading"
+                className="flex scroll-mt-20 flex-col gap-8"
+              >
+                <div className="flex items-end justify-between gap-6">
+                  <div className="flex flex-col gap-2">
+                    <h2
+                      id="latest-posts-heading"
+                      className="text-[26px] font-[540] leading-[1.2] tracking-[-0.02em] text-ink"
+                    >
+                      Latest writing
+                    </h2>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      Notes from the build process.
+                    </p>
+                  </div>
+                  <Link
+                    href="/blog"
+                    className="group inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-ink hover:underline"
+                  >
+                    Read all
+                    <ArrowRight
+                      className="size-4 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </div>
+                <div className="flex flex-col divide-y divide-border overflow-hidden rounded-[24px] border border-border bg-background">
+                  {posts.map((post) => (
+                    <PostRow key={post.id} post={post} />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
-          <div className="flex flex-col divide-y divide-border overflow-hidden rounded-[24px] border border-border bg-background">
-            {posts.map((post) => (
-              <PostRow key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
+        </div>
+      </div>
 
       <section
         aria-labelledby="contact-heading"
-        className="flex flex-col items-start justify-between gap-8 rounded-[24px] bg-block-coral p-8 text-block-fg sm:flex-row sm:items-center sm:p-12"
+        className="mt-16 flex flex-col items-start justify-between gap-8 rounded-[24px] bg-block-coral p-8 text-block-fg sm:flex-row sm:items-center sm:p-12"
       >
         <div className="flex flex-col gap-3">
           <h2
