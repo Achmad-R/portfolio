@@ -14,8 +14,8 @@ export function storagePathFromUrl(url: string): string | null {
   if (!url) return null;
   const marker = `/storage/v1/object/public/${storageBucket}/`;
   const idx = url.indexOf(marker);
-  if (idx === -1) return null;
-  return url.slice(idx + marker.length);
+  if (idx !== -1) return url.slice(idx + marker.length);
+  return url.startsWith("http") ? null : url;
 }
 
 export function getAdminStorageClient() {

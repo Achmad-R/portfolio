@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <!-- Authored offline illustration. Concept: rooms, presence, and websocket events as a live conversation network. -->
+  <title id="title">Realtime Chat App cover illustration</title>
+  <desc id="desc">A pastel editorial network diagram with conversation bubbles, room nodes, presence signals, and a message history lane.</desc>
+  <rect width="1600" height="1000" fill="#c8e6cd"/>
+  <rect x="72" y="72" width="1456" height="856" rx="32" fill="#f7f7f5"/>
+  <path d="M112 730C312 592 388 390 626 366C858 342 976 604 1218 504C1330 458 1416 452 1488 464" fill="none" stroke="#1f1d3d" stroke-width="5" stroke-dasharray="10 16"/>
+  <path d="M188 242C430 302 514 180 742 222C1014 272 1056 178 1398 260" fill="none" stroke="#1f1d3d" stroke-width="5" stroke-dasharray="10 16"/>
+
+  <circle cx="188" cy="242" r="34" fill="#f3c9b6" stroke="#1f1d3d" stroke-width="5"/>
+  <circle cx="626" cy="366" r="42" fill="#c5b0f4" stroke="#1f1d3d" stroke-width="5"/>
+  <circle cx="742" cy="222" r="26" fill="#dceeb1" stroke="#1f1d3d" stroke-width="5"/>
+  <circle cx="1218" cy="504" r="36" fill="#f3c9b6" stroke="#1f1d3d" stroke-width="5"/>
+  <circle cx="1398" cy="260" r="30" fill="#dceeb1" stroke="#1f1d3d" stroke-width="5"/>
+  <circle cx="388" cy="740" r="28" fill="#c5b0f4" stroke="#1f1d3d" stroke-width="5"/>
+
+  <rect x="158" y="302" width="286" height="180" rx="24" fill="#1f1d3d"/>
+  <path d="M210 364H380M210 404H340" stroke="#f7f7f5" stroke-width="12" stroke-linecap="round"/>
+  <path d="M232 482L260 520L292 482" fill="#1f1d3d"/>
+  <text x="188" y="344" fill="#f3c9b6" font-family="monospace" font-size="16" letter-spacing="3">ROOM / ALPHA</text>
+
+  <rect x="484" y="524" width="374" height="192" rx="24" fill="#f3c9b6" stroke="#1f1d3d" stroke-width="5"/>
+  <path d="M546 592H782M546 636H720" stroke="#211922" stroke-width="12" stroke-linecap="round"/>
+  <path d="M580 716L616 754L650 716" fill="#f3c9b6" stroke="#1f1d3d" stroke-width="5"/>
+  <text x="526" y="572" fill="#211922" font-family="monospace" font-size="16" letter-spacing="3">MESSAGE EVENT</text>
+
+  <rect x="930" y="172" width="356" height="242" rx="24" fill="#c5b0f4" stroke="#1f1d3d" stroke-width="5"/>
+  <circle cx="1000" cy="264" r="22" fill="#1f1d3d"/>
+  <circle cx="1066" cy="264" r="22" fill="#1f1d3d"/>
+  <circle cx="1132" cy="264" r="22" fill="#1f1d3d"/>
+  <path d="M978 330H1232M978 364H1162" stroke="#211922" stroke-width="12" stroke-linecap="round"/>
+  <text x="972" y="220" fill="#211922" font-family="monospace" font-size="16" letter-spacing="3">PRESENCE</text>
+
+  <rect x="994" y="650" width="388" height="170" rx="18" fill="#1f1d3d"/>
+  <text x="1034" y="702" fill="#dceeb1" font-family="monospace" font-size="16" letter-spacing="3">HISTORY / PAGINATE</text>
+  <path d="M1034 748H1302M1034 780H1222" stroke="#f7f7f5" stroke-width="10" stroke-linecap="round"/>
+  <text x="112" y="872" fill="#211922" font-family="monospace" font-size="18" letter-spacing="4">WEBSOCKET / ROOMS / ONLINE</text>
+</svg>

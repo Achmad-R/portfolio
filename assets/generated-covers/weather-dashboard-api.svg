@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <!-- Authored offline illustration. Concept: multiple weather providers normalized into one cached API response. -->
+  <title id="title">Weather Dashboard API cover illustration</title>
+  <desc id="desc">A navy editorial weather systems illustration with radar contours, provider inputs, cache layers, and a unified endpoint.</desc>
+  <rect width="1600" height="1000" fill="#c5b0f4"/>
+  <rect x="72" y="72" width="1456" height="856" rx="32" fill="#1f1d3d"/>
+  <circle cx="1110" cy="430" r="260" fill="none" stroke="#c8e6cd" stroke-width="5" opacity="0.9"/>
+  <circle cx="1110" cy="430" r="190" fill="none" stroke="#c8e6cd" stroke-width="5" opacity="0.65"/>
+  <circle cx="1110" cy="430" r="118" fill="none" stroke="#c8e6cd" stroke-width="5" opacity="0.4"/>
+  <path d="M1110 172V688M852 430H1368" stroke="#c8e6cd" stroke-width="3" opacity="0.3"/>
+  <path d="M1110 430L1292 292" stroke="#f3c9b6" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="1110" cy="430" r="22" fill="#f3c9b6"/>
+
+  <rect x="132" y="142" width="462" height="716" rx="18" fill="#f7f7f5"/>
+  <text x="180" y="214" fill="#211922" font-family="monospace" font-size="18" letter-spacing="4">WEATHER / INPUTS</text>
+  <rect x="180" y="268" width="366" height="116" rx="12" fill="#dceeb1"/>
+  <text x="216" y="316" fill="#211922" font-family="monospace" font-size="16" letter-spacing="2">PROVIDER A</text>
+  <path d="M216 348H472" stroke="#211922" stroke-width="10" stroke-linecap="round"/>
+  <rect x="180" y="420" width="366" height="116" rx="12" fill="#f3c9b6"/>
+  <text x="216" y="468" fill="#211922" font-family="monospace" font-size="16" letter-spacing="2">PROVIDER B</text>
+  <path d="M216 500H434" stroke="#211922" stroke-width="10" stroke-linecap="round"/>
+  <rect x="180" y="572" width="366" height="116" rx="12" fill="#c5b0f4"/>
+  <text x="216" y="620" fill="#211922" font-family="monospace" font-size="16" letter-spacing="2">FALLBACK</text>
+  <path d="M216 652H460" stroke="#211922" stroke-width="10" stroke-linecap="round"/>
+  <path d="M594 326H720M594 478H720M594 630H720" stroke="#f3c9b6" stroke-width="5" stroke-dasharray="12 14"/>
+  <circle cx="720" cy="326" r="12" fill="#f3c9b6"/>
+  <circle cx="720" cy="478" r="12" fill="#f3c9b6"/>
+  <circle cx="720" cy="630" r="12" fill="#f3c9b6"/>
+
+  <rect x="682" y="738" width="350" height="82" rx="12" fill="#dceeb1"/>
+  <text x="728" y="788" fill="#211922" font-family="monospace" font-size="17" letter-spacing="3">CACHE + RATE LIMIT</text>
+  <path d="M1032 778H1260" stroke="#dceeb1" stroke-width="5" stroke-dasharray="12 14"/>
+  <rect x="1260" y="738" width="190" height="82" rx="12" fill="#f3c9b6"/>
+  <text x="1290" y="788" fill="#211922" font-family="monospace" font-size="17" letter-spacing="2">REST API</text>
+  <text x="852" y="866" fill="#f7f7f5" font-family="monospace" font-size="17" letter-spacing="3">FORECAST / CURRENT CONDITIONS</text>
+</svg>

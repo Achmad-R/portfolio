@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <!-- Authored offline illustration. Concept: a terminal-inspired CMS pipeline from markdown to a published portfolio. -->
+  <title id="title">Terminal Portfolio CMS cover illustration</title>
+  <desc id="desc">A dark editorial systems diagram showing markdown content moving through a portfolio CMS, database, and public site.</desc>
+  <rect width="1600" height="1000" fill="#f7f7f5"/>
+  <rect x="64" y="64" width="1472" height="872" rx="32" fill="#1f1d3d"/>
+  <rect x="104" y="104" width="1392" height="792" rx="16" fill="#0d0d0d"/>
+  <rect x="104" y="104" width="1392" height="76" rx="16" fill="#211922"/>
+  <rect x="104" y="164" width="1392" height="16" fill="#211922"/>
+  <circle cx="146" cy="142" r="10" fill="#f3c9b6"/>
+  <circle cx="178" cy="142" r="10" fill="#dceeb1"/>
+  <circle cx="210" cy="142" r="10" fill="#c5b0f4"/>
+  <text x="260" y="149" fill="#f7f7f5" font-family="monospace" font-size="20" letter-spacing="3">PORTFOLIO / CMS</text>
+
+  <rect x="144" y="224" width="280" height="584" rx="12" fill="#211922"/>
+  <text x="184" y="276" fill="#c8e6cd" font-family="monospace" font-size="18" letter-spacing="3">CONTENT TREE</text>
+  <path d="M184 326H348M184 382H318M184 438H350M184 494H302" stroke="#6f6f6f" stroke-width="10" stroke-linecap="round"/>
+  <rect x="168" y="530" width="220" height="56" rx="8" fill="#f3c9b6"/>
+  <text x="190" y="566" fill="#211922" font-family="monospace" font-size="18" letter-spacing="2">POST / 02</text>
+  <path d="M184 634H334M184 690H286M184 746H342" stroke="#6f6f6f" stroke-width="10" stroke-linecap="round"/>
+
+  <path d="M472 338H650M472 520H650M472 702H650" stroke="#c5b0f4" stroke-width="4" stroke-dasharray="12 14"/>
+  <circle cx="472" cy="338" r="12" fill="#c5b0f4"/>
+  <circle cx="472" cy="520" r="12" fill="#c5b0f4"/>
+  <circle cx="472" cy="702" r="12" fill="#c5b0f4"/>
+  <text x="510" y="322" fill="#f7f7f5" font-family="monospace" font-size="17" letter-spacing="2">MARKDOWN</text>
+  <text x="510" y="504" fill="#f7f7f5" font-family="monospace" font-size="17" letter-spacing="2">PRISMA</text>
+  <text x="510" y="686" fill="#f7f7f5" font-family="monospace" font-size="17" letter-spacing="2">REVALIDATE</text>
+
+  <rect x="696" y="242" width="690" height="520" rx="16" fill="#c8e6cd"/>
+  <rect x="736" y="282" width="610" height="112" rx="10" fill="#ffffff"/>
+  <rect x="736" y="428" width="272" height="282" rx="10" fill="#f3c9b6"/>
+  <rect x="1032" y="428" width="314" height="282" rx="10" fill="#c5b0f4"/>
+  <text x="774" y="330" fill="#211922" font-family="monospace" font-size="18" letter-spacing="3">PUBLIC SITE</text>
+  <path d="M774 360H1236" stroke="#211922" stroke-width="8" stroke-linecap="round"/>
+  <text x="774" y="480" fill="#211922" font-family="monospace" font-size="16" letter-spacing="2">DATABASE</text>
+  <ellipse cx="870" cy="584" rx="72" ry="25" fill="#1f1d3d"/>
+  <path d="M798 584V652C798 666 830 678 870 678C910 678 942 666 942 652V584" fill="#1f1d3d"/>
+  <ellipse cx="870" cy="652" rx="72" ry="25" fill="#1f1d3d"/>
+  <text x="1070" y="480" fill="#211922" font-family="monospace" font-size="16" letter-spacing="2">STORAGE</text>
+  <rect x="1080" y="544" width="212" height="100" rx="8" fill="#1f1d3d"/>
+  <path d="M1108 574H1264M1108 606H1218" stroke="#dceeb1" stroke-width="9" stroke-linecap="round"/>
+  <path d="M1386 338H1430M1386 520H1430M1386 702H1430" stroke="#c5b0f4" stroke-width="4"/>
+  <text x="1384" y="832" fill="#f7f7f5" font-family="monospace" font-size="16" letter-spacing="2">SHIP / ITERATE</text>
+</svg>

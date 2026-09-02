@@ -47,6 +47,7 @@ export function ImageUpload({ value, onChange }: ImageUploadProps) {
             src={storagePublicUrl(value)}
             alt="Cover preview"
             fill
+            unoptimized
             className="object-cover"
           />
         </div>

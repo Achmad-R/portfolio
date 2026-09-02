@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <!-- Authored offline illustration. Concept: a server-side upload route placing cover assets in a public storage bucket. -->
+  <title id="title">Supabase Storage in Next.js cover illustration</title>
+  <desc id="desc">A technical editorial illustration showing image files moving through a server-only upload route into a public covers bucket and next image.</desc>
+  <rect width="1600" height="1000" fill="#efd4d4"/>
+  <rect x="72" y="72" width="1456" height="856" rx="32" fill="#f7f7f5"/>
+  <rect x="120" y="150" width="330" height="646" rx="18" fill="#c5b0f4"/>
+  <text x="166" y="222" fill="#211922" font-family="monospace" font-size="18" letter-spacing="4">SOURCE FILES</text>
+  <rect x="166" y="286" width="238" height="150" rx="12" fill="#ffffff"/>
+  <rect x="166" y="466" width="238" height="150" rx="12" fill="#dceeb1"/>
+  <path d="M202 344H368M202 524H368" stroke="#211922" stroke-width="12" stroke-linecap="round"/>
+  <path d="M202 380H326M202 560H342" stroke="#211922" stroke-width="9" stroke-linecap="round"/>
+  <text x="166" y="716" fill="#211922" font-family="monospace" font-size="16" letter-spacing="3">JPEG / PNG / WEBP</text>
+
+  <path d="M450 360H650M450 588H650" stroke="#1f1d3d" stroke-width="6" stroke-dasharray="14 14"/>
+  <path d="M620 334L656 360L620 386M620 562L656 588L620 614" fill="none" stroke="#1f1d3d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="492" y="424" width="284" height="122" rx="16" fill="#1f1d3d"/>
+  <text x="532" y="474" fill="#f3c9b6" font-family="monospace" font-size="17" letter-spacing="3">SERVER ROUTE</text>
+  <text x="532" y="512" fill="#f7f7f5" font-family="monospace" font-size="15" letter-spacing="2">SERVICE ROLE ONLY</text>
+
+  <rect x="822" y="206" width="574" height="576" rx="22" fill="#1f1d3d"/>
+  <text x="878" y="282" fill="#f7f7f5" font-family="monospace" font-size="19" letter-spacing="4">COVERS / PUBLIC BUCKET</text>
+  <path d="M914 374C914 330 966 308 1004 334C1022 292 1092 292 1110 340C1150 314 1212 340 1212 386C1260 386 1282 418 1282 452C1282 490 1246 516 1200 516H982C940 516 914 486 914 452C914 418 936 390 972 386" fill="#c8e6cd"/>
+  <rect x="930" y="586" width="122" height="112" rx="10" fill="#f3c9b6"/>
+  <rect x="1074" y="586" width="122" height="112" rx="10" fill="#c5b0f4"/>
+  <rect x="1218" y="586" width="122" height="112" rx="10" fill="#dceeb1"/>
+  <path d="M958 622H1024M1102 622H1168M1246 622H1312" stroke="#211922" stroke-width="8" stroke-linecap="round"/>
+  <path d="M958 658H1006M1102 658H1150M1246 658H1294" stroke="#211922" stroke-width="6" stroke-linecap="round"/>
+  <text x="902" y="752" fill="#f3c9b6" font-family="monospace" font-size="16" letter-spacing="3">NEXT / IMAGE / RESIZE</text>
+  <text x="120" y="864" fill="#211922" font-family="monospace" font-size="18" letter-spacing="4">UPLOAD ONCE / SERVE EVERYWHERE</text>
+</svg>

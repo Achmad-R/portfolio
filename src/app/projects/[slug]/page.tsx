@@ -110,6 +110,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             src={storagePublicUrl(project.coverImageUrl)}
             alt={project.title}
             fill
+            unoptimized
             className="object-cover"
           />
         </div>
